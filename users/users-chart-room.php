@@ -47,15 +47,15 @@ $row=mysqli_fetch_object($result);
           <div class="card border-primary">
             <div class="card-body">
               <div class="form-group mb-5">
-                <a href="#search-package" class="btn btn-primary btn-lg rounded-pill float-end" data-bs-toggle="modal">ค้นหา</a>
+                <a href="#search-chart-room" class="btn btn-primary btn-lg rounded-pill float-end" data-bs-toggle="modal">ค้นหา</a>
                 <a href="#add-chart-room" class="btn btn-success btn-lg rounded-pill mb-3 float-start" data-bs-toggle="modal">สร้างห้องแชท</a>
               </div>
               <br>
-            <?php if(isset($_SESSION['search_chat_room'])){ ?>
+            <?php if(isset($_SESSION['search_chart_room'])){ ?>
              <div class="alert alert-warning">
-               <h5 class="text-danger">คำค้นหาของคุณคือ : <?php echo $_SESSION['search_chat_room']; ?></h5>
+               <h5 class="text-danger">คำค้นหาของคุณคือ : <?php echo $_SESSION['search_chart_room']; ?></h5>
                <div class="ms-auto">
-                 <a href="sql/clear-session.php?search_chat_room=1" class="btn btn-danger">ยกการค้นหา</a>
+                 <a href="sql/clear-session.php?search_chart_room=1" class="btn btn-danger">ยกการค้นหา</a>
                </div>
              </div>
               <?php } ?>
@@ -85,8 +85,29 @@ $row=mysqli_fetch_object($result);
                   </div>
                 </div>
               </form>
-              <!-- end modal add package -->
-
+              
+              <form action="sql/search.php" method="post" enctype="multipart/form-data">
+                <div class="modal fade" id="search-chart-room">
+                  <div class="modal-dialog modal-dialog-centered">
+                    <div class="modal-content">
+                      <div class="modal-header bg-primary text-light">
+                        <h4 class="modal-title">การค้นหาห้องแชท</h4>
+                        <button class="btn-close" data-bs-dismiss="modal" type="button"></button>
+                      </div>
+                      <div class="modal-body">
+                        <div class="input-group">
+                          <input type="text" class="form-control" placeholder="ค้นหา" name="search">
+                          <input type="hidden" name="search_chart_room" value="1">
+                          <button class="btn btn-primary">ค้นหา</button>
+                        </div>
+                      </div>
+                      <div class="modal-footer">
+                        <button class="btn btn-danger" data-bs-dismiss="modal" type="button">ปิด</button>
+                      </div>
+                    </div>
+                  </div>
+                </div>
+              </form>
 
 
 

@@ -8,7 +8,7 @@
 
 	if ($result) {
 		$_SESSION['ok']="สร้างห้องแชทสำเร็จ";
-		header("location: ../user-chart-room.php");
+		header("location: ../users-chart-room.php");
 	}else{
 		echo mysqli_error($conn);
 	}
