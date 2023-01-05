@@ -66,7 +66,7 @@
 				  				<h4 class="text-center alert-success rounded-pill modal-title">เข้าสู่ระบบ</h4>
 					       	<div class="form-group my-2">
 					       		<label class="form-label">E-mail</label>
-					       		<input type="text" class="form-control" name="email">
+					       		<input type="text" class="form-control" name="email"></input>
 					       	</div>
 					       	<div class="form-group my-2">
 					       		<label class="form-label">Password</label>
