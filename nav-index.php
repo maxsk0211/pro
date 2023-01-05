@@ -70,7 +70,7 @@
 					       	</div>
 					       	<div class="form-group my-2">
 					       		<label class="form-label">Password</label>
-					       		<input type="password" class="form-control" name="passwords">
+					       		<input type="password" class="form-control" name="passwords"></input>
 					       	</div>
 					       	<div class="d-grid gap-2 mt-3">
 					       		<button type="submit" class="btn btn-success">เข้าสูระบบ</button>
