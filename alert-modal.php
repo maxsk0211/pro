@@ -28,7 +28,7 @@
 		</div>
 	</div>
 </div>
-
+<!-- hi -->
   <script type="text/javascript">
   	// แจ้ง login ผิดพลาด
 	<?php  if (isset($_GET["log"]) && ($_GET["log"]==1)) { ?>
