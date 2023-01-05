@@ -164,12 +164,10 @@
     const pass1 = document.querySelector('input[name=pass1]');
     const pass2 = document.querySelector('input[name=pass2]');
     if (pass1.value===pass2.value) {
-        pass2.setCustomValidity('');
         document.getElementById('message').style.color = 'green';
         document.getElementById('message').innerHTML = 'รหัสผ่านเหมือนกัน';
         document.getElementById("register").disabled = false;
     }else{
-        pass2.setCustomValidity('กรุณาใส่ใหม่อีกครั้ง');
         document.getElementById('message').style.color = 'red';
         document.getElementById('message').innerHTML = 'รหัสผ่านไม่ตรงกัน';
         document.getElementById("register").disabled = true;
