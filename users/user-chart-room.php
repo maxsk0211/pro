@@ -22,7 +22,7 @@ $row=mysqli_fetch_object($result);
   <head>
     <meta charset="utf-8">
     <meta name="viewport" content="width=device-width, initial-scale=1">
-    <title>จัดการแพ็คเกจ - Happy Care Nursing Home - บ้านมีสูข</title>
+    <title>จัดการห้องแชท - Happy Care Nursing Home - บ้านมีสูข</title>
       <link href="../css/bootstrap.min.css" rel="stylesheet"> 
       <script src="../js/bootstrap.js"></script> 
 
@@ -39,7 +39,7 @@ $row=mysqli_fetch_object($result);
        <div class="col-md-9">
           <div class="card border-primary border-3 rounded-pill my-2">
             <div class="card-body">
-              <h3 class="card-header bg-danger text-center text-light rounded-pill">จัดการแพ็คเกจ</h3>
+              <h3 class="card-header bg-success text-center text-light rounded-pill">จัดการห้องแชท</h3>
             </div>
           </div>
 
@@ -48,19 +48,20 @@ $row=mysqli_fetch_object($result);
             <div class="card-body">
               <div class="form-group mb-5">
                 <a href="#search-package" class="btn btn-primary btn-lg rounded-pill float-end" data-bs-toggle="modal">ค้นหา</a>
+                <a href="#add-chart-room" class="btn btn-success btn-lg rounded-pill mb-3 float-start" data-bs-toggle="modal">สร้างห้องแชท</a>
               </div>
               <br>
-            <?php if(isset($_SESSION['search_package'])){ ?>
+            <?php if(isset($_SESSION['search_chat_room'])){ ?>
              <div class="alert alert-warning">
-               <h5 class="text-danger">คำค้นหาของคุณคือ : <?php echo $_SESSION['search_package']; ?></h5>
+               <h5 class="text-danger">คำค้นหาของคุณคือ : <?php echo $_SESSION['search_chat_room']; ?></h5>
                <div class="ms-auto">
-                 <a href="sql/clear-session.php?search_package=1" class="btn btn-danger">ยกการค้นหา</a>
+                 <a href="sql/clear-session.php?search_chat_room=1" class="btn btn-danger">ยกการค้นหา</a>
                </div>
              </div>
               <?php } ?>
               
-              <form action="sql/insert-package.php" method="post" enctype="multipart/form-data">
-                <div class="modal fade" id="add-package">
+              <form action="sql/insert-chart-room.php" method="post" enctype="multipart/form-data">
+                <div class="modal fade" id="add-chart-room">
                   <div class="modal-dialog modal-dialog-centered ">
                     <div class="modal-content">
                       <div class="modal-header bg-success text-light">
@@ -69,29 +70,14 @@ $row=mysqli_fetch_object($result);
                       </div>
                       <div class="modal-body">
 
-                        <div class="form-group ">
-                          <label for="" class="form-label">ชื่อแพ็คเกจ</label>
-                          <input class="form-control" type="text" name="pa_name"></input>
-                        </div>
-                        
-                        <label class="form-label">ราคา</label>
-                        <div class="input-group">
-                          <input type="number" name="pa_price" class="form-control">
-                          <span class="input-group-text">บาท</span>
-                        </div>
-                        
                         <div class="form-group">
-                          <label for="" class="form-label">รายละเอียด</label>
-                          <textarea class="form-control" name="pa_detail"></textarea>
+                          <label class="form-label">ชื่อห้องแชท</label>
+                          <input type="text" class="form-control" name="chart_room_name">
                         </div>
-                        <div class="input-group me-3">
-                          <label for="" class="input-group-text">เลือกรูปปก</label>
-                          <input type="file" name="pa_pic" class="form-control">
-                        </div>
-                        <br>
+                        
                       </div>
                       <div class="modal-footer">
-                        <input type="hidden" name="id_user" value="<?php echo $_SESSION["id_user"]; ?>">
+                        <input type="hidden" name="id_user" value="<?php echo $_SESSION['id_user']; ?>">
                         <button type="submit" class="btn btn-success float-end">บันทึกข้อมูล</button>
                         <button class="btn btn-danger" data-bs-dismiss="modal" type="button">ปิด</button>
                       </div>
