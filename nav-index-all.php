@@ -11,13 +11,13 @@
       <ul class="navbar-nav mx-auto ">
 
 		      <div class="nav-item m-2 mt-2">
-		      	<a href="#show_promotion" class="btn btn-danger rounded-pill">แพ็คเกจ</a>
+		      	<a href="show-all-package.php" class="btn btn-danger rounded-pill">แพ็คเกจ</a>
 					</div>
 		      <div class="nav-item m-2 mt-2">
-		      	<a href="#show_news" class="btn btn-primary rounded-pill">ข่าวสาร</a>
+		      	<a href="show-all-news.php" class="btn btn-primary rounded-pill">ข่าวสาร</a>
 					</div>
 					<div class="nav-item m-2 mt-2">
-		      	<a href="#show-webboard" class="btn btn-info rounded-pill">กระดาษสนทนา</a>
+		      	<a href="show-all-webboard.php" class="btn btn-info rounded-pill">กระดาษสนทนา</a>
 		      </div>
 
         <li class="nav-item d-none d-lg-block navbar-brand">
@@ -27,7 +27,7 @@
         </li>
 
         	<div class="nav-item m-2 mt-2">
-		      	<a href="#show-report" class="btn btn-secondary rounded-pill">แบบสอบถาม</a>
+		      	<a href="show-all-report.php" class="btn btn-secondary rounded-pill">แบบสอบถาม</a>
 		      </div>
 		      <div class="nav-item m-2 mt-2">
 		      	<a href="show-contact.php" class="btn btn-warning rounded-pill">ติดต่อ</a>

@@ -16,7 +16,7 @@
   <body class="bg-secondary" style="padding-top:20px ;">
 	  
 	  <div class="container-fluid">
-     <?php include 'show-Nav.php'; ?>
+     <?php include 'nav-index-all.php'; ?>
 <!-- start Carousel Pr -->
   <div class="row my-5 justify-content-center ">
     <div class="col-md-12 col-lg-8 col-sm-10">

@@ -48,7 +48,7 @@
 	                </div>
 	              </div>
 	            </div>
-	            <a class="carousel-control-prev" href="#carousel1" role="button" data-bs-slide="prev"> 
+	            <a class="carousel-control-prev"  href="#carousel1" role="button" data-bs-slide="prev"> 
 	            	<span class="carousel-control-prev-icon" aria-hidden="true"></span> 
 	            	<span class="sr-only">Previous</span> 
 	            </a> 
@@ -62,7 +62,7 @@
 				</div>
 			<!-- End Carousel -->
 			<?php include 'show-package.php'; ?>
-			<?php include 'show-New.php'; ?>
+			<?php include 'show-news.php'; ?>
 	
 
 			<?php include 'show-webboard.php' ?>

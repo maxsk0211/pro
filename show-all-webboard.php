@@ -1,7 +1,26 @@
-	<!-- Start webboard -->
-				<div class="row my-5 justify-content-center " id="show-webboard">
-					<div class="col-md-12 col-lg-8 col-sm-12">
-						<div class="alert bg-info rounded-pill border-4 border-light h4 text-center">กระดาษสนทนา</div>
+<?php 
+	session_start();
+	require('dbcon.php');
+?>
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="utf-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <title>Happy Care Nursing Home - บ้านมีสูข</title>
+       <link href="css/bootstrap.min.css" rel="stylesheet"> 
+	    <script src="js/bootstrap.js"></script> 
+</head>
+  <body style="height: 5000px; padding-top: 50px;background: rgb(100, 40, 140);">
+  	<!-- main container -->
+  <div class="container-fluid">
+		  <?php include 'nav-index-all.php'; ?>
+      
+        <!-- Start webboard -->
+        <div class="row my-5 justify-content-center " id="show-webboard">
+          <div class="col-md-12 col-lg-8 col-sm-12">
+            <div class="alert bg-info rounded-pill border-4 border-light h4 text-center">กระดาษสนทนา</div>
 
           <div class="card">
             <div class="card-body">
@@ -20,7 +39,7 @@
                 <tbody>
                   <?php 
 
-                $sql = " SELECT * FROM webboard,users WHERE users.id_user=webboard.id_user ORDER BY webboard.id_webboard DESC limit 10";
+                $sql = " SELECT * FROM webboard,users WHERE users.id_user=webboard.id_user ORDER BY webboard.id_webboard DESC";
                 $result=mysqli_query($conn,$sql);
                 //$count = mysqli_num_rows($result);
 
@@ -46,8 +65,11 @@
             </div>
           </div>
 
-				<a href="show-all-webboard.php" class="btn btn-primary d-grid mt-2">ดูทั้งหมด</a>
-					</div>
-					
-				</div>
-				<!-- End webboard -->
+        <!-- <a href="show-all-webboard.php" class="btn btn-primary d-grid mt-2">ดูทั้งหมด</a> -->
+          </div>
+          
+        </div>
+        <!-- End webboard -->
+  </div>
+</body>
+</html>

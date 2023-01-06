@@ -56,7 +56,7 @@
 	            </a> 
 	          </div>
 
-        	<a href="#" class="btn btn-primary float-end mt-2">ดูทั้งหมด</a>					
+        	<a href="show-all-package.php" class="btn btn-primary d-grid gap-2 mt-2">ดูทั้งหมด</a>					
         </div>
         <!-- end col-md-8 col-sm-10 -->
 

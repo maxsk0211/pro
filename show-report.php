@@ -1,12 +1,12 @@
 	<!-- Start webboard -->
 				<div class="row my-5 justify-content-center " id="show-report">
 					<div class="col-md-12 col-lg-8 col-sm-12">
-						<div class="alert alert-secondary rounded-pill border-4 border-dark h4 text-center">แบบสอบถาม</div>
+						<div class="alert bg-secondary rounded-pill border-4 border-light h4 text-center text-light">แบบสอบถาม</div>
 
 
 						<div class="card">
             <div class="card-body">
-              <h4 class="bg-primary card-header mb-2">แบบสอบถามทั้งหมด</h4>
+              <h4 class="bg-primary card-header mb-2 text-light">แบบสอบถามทั้งหมด</h4>
               <table class="table table-hover table-info">
                 <thead>
                   <tr class="table-primary">
@@ -20,7 +20,7 @@
                 </thead>
                 <tbody>
                   <?php 
-					$sql="SELECT * FROM report,users  where  report.id_user= users.id_user ORDER BY report.id_report DESC";
+					$sql="SELECT * FROM report,users  where  report.id_user= users.id_user ORDER BY report.id_report DESC limit 5";
 					$result=mysqli_query($conn,$sql);
 					$i=1;
 					while( $row = mysqli_fetch_object($result)){ 
