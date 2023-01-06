@@ -11,7 +11,7 @@
       <ul class="navbar-nav mx-auto ">
 
 		      <div class="nav-item m-2 mt-2">
-		      	<a href="#show_promotion" class="btn btn-danger rounded-pill">โปรโมชั้น</a>
+		      	<a href="#show_promotion" class="btn btn-danger rounded-pill">แพ็คเกจ</a>
 					</div>
 		      <div class="nav-item m-2 mt-2">
 		      	<a href="#show_news" class="btn btn-primary rounded-pill">ข่าวสาร</a>

@@ -35,7 +35,7 @@
      	<div class="col-md-9">
      		<div class="card">
      			<div class="card-body">
-     				<form action="sql/edit-admin-me.php" method="post" enctype="multipart/form-data">
+     				<form action="sql/edit-user-me.php" method="post" enctype="multipart/form-data">
      					
      				<div class="p-3">
 				                <div class=" mb-3">
@@ -69,7 +69,7 @@
 
 				                    <div class="form-group mt-2">
 				                    	<label class="form-label">Tel</label>
-				                    	<input type="text" class="form-control" name="tel" maxlength="2"  value="<?php echo $row->tel;?>"  require>
+				                    	<input type="text" class="form-control" name="tel" value="<?php echo $row->tel;?>"  require>
 				                    </div>
 
 				                    <div class="form-group mt-2">

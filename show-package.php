@@ -2,7 +2,7 @@
 <!-- start Carousel Pr -->
 	<div class="row my-5 justify-content-center " id="show_promotion">
 		<div class="col-md-12 col-lg-8 col-sm-10">
-			<div class="alert alert-danger text-center h4 text-dark rounded-pill border-4 border-danger">Promotion - โปรโมชั้น</div>
+			<div class="alert bg-danger text-center h4 text-light rounded-pill border-4 border-light">Package - แพ็คเกจ</div>
 
 				<?php 
 				$sql="SELECT * FROM package WHERE id_pa ORDER BY id_pa DESC LIMIT 3";
@@ -27,18 +27,21 @@
 	            	
 	            	 ?>
 	              <div class="carousel-item <?php if($i==0){echo "active";}?>"> 
-	              	<div class="row g-0 bg-danger position-relative ">
+	              	<div class="row g-0 position-relative" style="background-color: rgb(241, 148, 138);">
 					  <div class="col-md-6 mb-md-0 p-md-4">
 					    <img src="uploads/<?php echo $row->pa_pic;?>" class="w-100" alt="...">
 					  </div>
 					  <div class="col-md-6 p-4 ps-md-0">
-					    <h5 class="mt-0"><?php echo $row->pa_name; ?></h5>
-					    <p><?php echo $row->pa_detail; ?></p>
-					    <!-- <a href="detail-New.php" class="stretched-link btn btn-primary float-start">ดูเพิ่มเติม...</a> -->
+					  	<div class="alert alert-success">
+					  		<h4><?php echo $row->pa_name; ?></h4>
+					  	</div>
+
+					    <p class="alert alert-warning"><?php echo $row->pa_detail; ?></p>
+					    <strong class="d-flex alert alert-danger h4"><?php echo "ราคา ".$row->pa_price." บาท" ?></strong>
+					    <!-- <a href="" class="stretched-link btn btn-primary float-start" data-bs-toggle="modal">ดูเพิ่มเติม...</a> -->
 					  </div>
 					</div>
 	              </div>
-
 	              <?php $i++; } ?>
 
 
@@ -52,7 +55,8 @@
 	            	<span class="sr-only">Next</span> 
 	            </a> 
 	          </div>
-					
+
+        	<a href="#" class="btn btn-primary float-end mt-2">ดูทั้งหมด</a>					
         </div>
         <!-- end col-md-8 col-sm-10 -->
 
