@@ -10,7 +10,7 @@
 	          <p class="form-label badge fs-6 mt-2 <?php if($row->user_level==1){echo "bg-danger";}else{echo "bg-warning";} ?>"><?php echo $row->email; ?></p>
 
         	<div class="mt-5">
-            	<a href="edit-admin.php" class="btn btn-warning rounded-pill">แก้ไขข้อมูลส่วนตัว</a>
+            	<a href="edit-user.php" class="btn btn-warning rounded-pill">แก้ไขข้อมูลส่วนตัว</a>
           	</div>
           	<div class="mt-2">
           		<a href="users-add-chat-room.php" class="btn btn-success rounded-pill">สนทนา</a>

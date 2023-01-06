@@ -16,6 +16,7 @@
 	$url="../show-webboard.php?id_webboard=".$_POST['id_webboard'];
 
 	if ($result) {
+		$_SESSION['ok']="เพิ่มความติดเห็นสำเร็จ";
 		header("location: $url");
 		exit();
 	}else{

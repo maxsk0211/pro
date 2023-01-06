@@ -31,13 +31,13 @@ $row=mysqli_fetch_object($result);
 
     <div class="container-fluid">
      
-     <?php include 'nav-user.php'; ?>
+     <?php include 'nav-admin.php'; ?>
      <div class="row justify-content-center">
        <div class="col-md-3 d-none d-lg-block">
           <?php include 'nav-left.php'; ?>
        </div>
        <div class="col-md-9">
-          <a href="users-add-chat-room.php" class="btn btn-warning btn-lg"><--- Back</a>
+          <a href="admin-add-chat-room.php" class="btn btn-warning btn-lg"><--- Back</a>
           <div class="card border-primary border-3 rounded-pill my-2">
             <div class="card-body">
               <h3 class="card-header bg-success text-center text-light rounded-pill">ห้องแชท</h3>
@@ -127,7 +127,7 @@ $row=mysqli_fetch_object($result);
                   <div class="row">
                     <div class="col-1">
                       <div class="d-flex flex-column align-items-center ">
-                        <img src="../uploads/<?php echo $row->pic;?>" alt="" class="w-50 rounded-pill">
+                        <img src="../uploads/<?php echo $row->pic;?>" alt="" class="w-100 rounded-pill">
                         <span class="badge bg-primary mt-1"><?php echo $row->fname." ".$row->lname; ?></span>
                       </div>
                     </div>
@@ -140,9 +140,12 @@ $row=mysqli_fetch_object($result);
                       </form>
                     </div>
                   </div>
+                  
                 </div>
               </div>
-              
+              <div class="text-center">
+                <a href="sql/end-chat.php?id_chat_room=<?php echo $_GET['id_chat_room'];?>&url=admin-chat-room.php" class="btn btn-danger btn-lg <?php if($row_chat_room->char_room_status==0){ echo "disabled";}?>" >จบการสนทนา</a>  
+              </div>
 
 
 

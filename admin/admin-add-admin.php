@@ -82,7 +82,6 @@
                       </div>
                       <div class="modal-body">
 
-                        <form action="sql/insert-users.php" method="post" enctype="multipart/form-data">
                       <div class="form-group mt-2">
                         <label class="form-label">Name</label>
                         <input type="text" class="form-control" name="users_fname" required>
@@ -137,10 +136,7 @@
                       <label for="" class="input-group-text">เลือกรูปโปไฟล์</label>
                       <input type="file" class="form-control" name="users_file_pic">
                     </div>
-
-
-                  </form>
-
+                    
                       </div>
                       <div class="modal-footer">
                         <input type="hidden" name="id_user" value="<?php echo $_SESSION["id_user"]; ?>">

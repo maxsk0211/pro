@@ -151,7 +151,11 @@ $row=mysqli_fetch_object($result);
                       <a href="#" class="btn btn-danger btn-sm">ลบ</a>
                     </td>
                     <td>
-                      <span class="badge bg-success">สามารถแชทได้</span>
+                      <?php if($row->char_room_status==1){ ?>
+                        <span class="badge bg-success">สามารถแชทได้</span>
+                      <?php }else{ ?>
+                        <span class="badge bg-danger">จบการสนทนา</span>
+                      <?php }?>
                     </td>
                   </tr>
                                   
