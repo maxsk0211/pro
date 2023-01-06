@@ -82,14 +82,22 @@
 										    report_detail.id_report_detail
 										    ";
 								$result=mysqli_query($conn,$sql);
+								$count_score=0;
 								while($row=mysqli_fetch_object($result)){
+									//นับคนประเมิน
 									$count_score=$row->count_score;
+									//คะแนน
 									$report_score=$row->report_score;
+									//คะแนนรวม
 									$sum_score=$row->sum_score;
+
 									$total=$count_score*$report_score;
-									$percentage=($sum_score/$total)*100;
+									//หาค่าเฉลี่ยร้อยละ
+									$percentage=($sum_score/$total)*100; 
+									//หลอดที่เท่า
 									$balance=100-$percentage;
-									//$percentage=59;
+
+									// กำหนดสีพื้นหลังของหลอด
 									if ($percentage >= 80 ) {
 										$bg="bg-success";
 									}elseif($percentage >= 60){
@@ -102,7 +110,9 @@
 							 <div class="alert alert-info mt-3">
 								<div class="alert-heading h5"><?php echo $row->detail_name; ?></div>
 								<div class="progress" style="height: 50px;">
+
 								  <div class="progress-bar text-dark <?php echo $bg; ?>" role="progressbar" style="width: <?php echo $percentage;?>%; h" aria-valuenow="<?php echo $percentage;?>" aria-valuemin="0" aria-valuemax="100"><p class="h4 "><?php echo number_format((float)$percentage, 2, '.', '');?>%</p></div>
+
 								  <div class="progress-bar bg-secondary" role="progressbar" style="width: <?php echo $balance;?>%; h" aria-valuenow="<?php echo $balance;?>" aria-valuemin="0" aria-valuemax="100"></div>
 								</div>
 
@@ -128,13 +138,7 @@
      	<!-- col-md-9 -->
      </div>
      <!-- row -->
-		  <div class="row my-5 justify-content-center">
-		  	<div class="col-md-12 col-lg-8 col-sm-10">
 
-
-				
-			  </div>
-		  </div>
     </div>
 	  
 	 

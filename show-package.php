@@ -5,7 +5,7 @@
 			<div class="alert alert-danger text-center h4 text-dark rounded-pill border-4 border-danger">Promotion - โปรโมชั้น</div>
 
 				<?php 
-				$sql="SELECT * FROM promotion WHERE id_pro ORDER BY id_pro DESC LIMIT 3";
+				$sql="SELECT * FROM package WHERE id_pa ORDER BY id_pa DESC LIMIT 3";
 				$result=mysqli_query($conn,$sql);
 				$result1=mysqli_query($conn,$sql);
 
@@ -27,13 +27,13 @@
 	            	
 	            	 ?>
 	              <div class="carousel-item <?php if($i==0){echo "active";}?>"> 
-	              	<div class="row g-0 bg-light position-relative ">
+	              	<div class="row g-0 bg-danger position-relative ">
 					  <div class="col-md-6 mb-md-0 p-md-4">
-					    <img src="uploads/<?php echo $row->pro_pic;?>" class="w-100" alt="...">
+					    <img src="uploads/<?php echo $row->pa_pic;?>" class="w-100" alt="...">
 					  </div>
 					  <div class="col-md-6 p-4 ps-md-0">
-					    <h5 class="mt-0"><?php echo $row->pro_name; ?></h5>
-					    <p><?php echo $row->pro_detail; ?></p>
+					    <h5 class="mt-0"><?php echo $row->pa_name; ?></h5>
+					    <p><?php echo $row->pa_detail; ?></p>
 					    <!-- <a href="detail-New.php" class="stretched-link btn btn-primary float-start">ดูเพิ่มเติม...</a> -->
 					  </div>
 					</div>

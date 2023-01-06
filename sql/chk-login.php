@@ -23,6 +23,7 @@
 		header("location: ../users/users-add-webboard.php");
 		exit();
 	}else{
+		$_SESSION['error']="E-mail หรือ รหัสผ่านไม่ถูกต้อง";
 		header("location: ../index.php");
 		exit();
 	}

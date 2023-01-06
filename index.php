@@ -8,7 +8,7 @@
     <meta charset="utf-8">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1">
-    <title>Bootstrap - Prebuilt Layout</title>
+    <title>Happy Care Nursing Home - บ้านมีสูข</title>
        <link href="css/bootstrap.min.css" rel="stylesheet"> 
 	    <script src="js/bootstrap.js"></script> 
 </head>
@@ -27,21 +27,21 @@
 	            </ol>
 	            <div class="carousel-inner" role="listbox">
 	              <div class="carousel-item active"> 
-	              	<img class="d-block mx-auto w-100" src="https://cdn.pixabay.com/photo/2017/02/20/18/03/cat-2083492_960_720.jpg" alt="First slide">
+	              	<img class="d-block mx-auto w-100" src="img/img1.jpg" alt="First slide">
 	                <div class="carousel-caption">
 	                  <h5>First slide Heading</h5>
 	                  <p>First slide Caption</p>
 	                </div>
 	              </div>
 	              <div class="carousel-item"> 
-	              	<img class="d-block mx-auto w-100" src="https://cdn.pixabay.com/photo/2016/02/10/16/37/cat-1192026_960_720.jpg" alt="Second slide">
+	              	<img class="d-block mx-auto w-100" src="img/img2.jpg" alt="Second slide">
 	                <div class="carousel-caption">
 	                  <h5>Second slide Heading</h5>
 	                  <p>Second slide Caption</p>
 	                </div>
 	              </div>
 	              <div class="carousel-item"> 
-	              	<img class="d-block mx-auto w-100" src="https://cdn.pixabay.com/photo/2017/07/25/01/22/cat-2536662_960_720.jpg" alt="Third slide">
+	              	<img class="d-block mx-auto w-100" src="img/img3.jpg" alt="Third slide">
 	                <div class="carousel-caption">
 	                  <h5>Third slide Heading</h5>
 	                  <p>Third slide Caption</p>
@@ -61,7 +61,7 @@
 	        </div>
 				</div>
 			<!-- End Carousel -->
-			<?php include 'show-promotion.php'; ?>
+			<?php include 'show-package.php'; ?>
 			<?php include 'show-New.php'; ?>
 	
 

@@ -84,48 +84,48 @@
 
                       <div class="form-group mt-2">
                         <label class="form-label">Name</label>
-                        <input type="text" class="form-control" name="users_fname" required>
+                        <input type="text" class="form-control" name="fname" required>
                       </div>
 
                       <div class="form-group mt-2">
                         <label class="form-label">Surname</label>
-                        <input type="text" class="form-control" name="users_lname" required > 
+                        <input type="text" class="form-control" name="lname" required > 
                       </div>
                                     
                       <div class="form-group mt-2">
                         <label class="form-label">E-Mail</label>
-                        <input type="email" class="form-control" name="users_email" required> 
+                        <input type="email" class="form-control" name="email" required> 
                       </div>
                        
                        <div class="row mt-2">
                           <div class="col-md-6">
                             <label class="form-label">Password</label>
-                            <input type="password" class="form-control" name="users_pass1" required onkeyup="chk_pass()">
+                            <input type="password" class="form-control" name="pass1" required onkeyup="chk_pass()">
                           </div>
                           <div class="col-md-6">
                             <label class="form-label">confirm Password</label>
-                            <input type="password" class="form-control" name="users_pass2" required onkeyup="chk_pass()">
+                            <input type="password" class="form-control" name="pass2" required onkeyup="chk_pass()">
                           </div>
                           <span id="message"></span>
                        </div>
                     <div class="form-group mt-2">
                       <label class="form-label">Birthday</label>
-                      <input type="date" class="form-control" name="users_birthday" required>
+                      <input type="date" class="form-control" name="birthday" required>
                     </div>
 
                     <div class="form-group mt-2">
                       <label class="form-label">Tel</label>
-                      <input type="text" class="form-control" name="users_tel" maxlength="10" required>
+                      <input type="text" class="form-control" name="tel" maxlength="10" required>
                     </div>
 
                     <div class="form-group mt-2">
                       <label class="form-label">Address</label>
-                      <textarea class="form-control" name="users_address" required></textarea>
+                      <textarea class="form-control" name="address" required></textarea>
                     </div>
 
                     <div class="form-group mt-2">
                       <label for="" class="badge bg-danger fs-6 my-1">เลือกระดับผู้ใช้งาน</label>
-                        <select class="form-select" name="user_level">
+                        <select class="form-select" name="user_level" required>
                           <option disabled selected>เลือกระดับผู้ใช้งาน</option>
                           <option value="1" class="alert-danger">แอดมิน</option>
                           <option value="0" class="alert-warning">ผู้ใช้งานทั่วไป</option>
@@ -134,12 +134,11 @@
 
                     <div class="input-group mt-3">
                       <label for="" class="input-group-text">เลือกรูปโปไฟล์</label>
-                      <input type="file" class="form-control" name="users_file_pic">
+                      <input type="file" class="form-control" name="file_pic" required>
                     </div>
                     
                       </div>
                       <div class="modal-footer">
-                        <input type="hidden" name="id_user" value="<?php echo $_SESSION["id_user"]; ?>">
                         <button type="submit" class="btn btn-warning" id="register" disabled>สมัครสมาชิก</button>
                         <button class="btn btn-danger" data-bs-dismiss="modal" type="button">ปิด</button>
                       </div>
@@ -264,7 +263,7 @@
                           <button class="btn-close" data-bs-dismiss="modal" type="button"></button>
                         </div>
                         <div class="modal-body">
-                             <div class="form-group">
+                      <div class="form-group">
                         <label class="form-label">Name</label>
                         <input type="text" class="form-control" required value="<?php echo $row->fname;?>" name="fname"> 
                       </div>
@@ -351,8 +350,8 @@
     <script type="text/javascript">
  function chk_pass(){
 
-    const pass1 = document.querySelector('input[name=users_pass1]');
-    const pass2 = document.querySelector('input[name=users_pass2]');
+    const pass1 = document.querySelector('input[name=pass1]');
+    const pass2 = document.querySelector('input[name=pass2]');
     if (pass1.value===pass2.value) {
         pass2.setCustomValidity('');
         document.getElementById('message').style.color = 'green';
