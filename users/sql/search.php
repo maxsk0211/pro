@@ -5,10 +5,10 @@
 		$_SESSION['search_webboard']=$search_webboard;
 		header("location: ../users-add-webboard.php");
 		
-	}elseif (isset($_POST['search_chart_room']) && ($_POST['search_chart_room']==1)) {
-		echo $search_chart_room=$_POST['search_chart_room'];
-		$_SESSION['search_chart_room']=$search_chart_room;
-		//header("location: ../users-chart-room.php");
+	}elseif (isset($_POST['search_chat_room']) && ($_POST['search_chat_room']==1)) {
+		$search_chat_room=$_POST['search'];
+		$_SESSION['search_chat_room']=$search_chat_room;
+		header("location: ../users-add-chat-room.php");
 		
 	}
 

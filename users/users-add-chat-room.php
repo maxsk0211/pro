@@ -47,21 +47,21 @@ $row=mysqli_fetch_object($result);
           <div class="card border-primary">
             <div class="card-body">
               <div class="form-group mb-5">
-                <a href="#search-chart-room" class="btn btn-primary btn-lg rounded-pill float-end" data-bs-toggle="modal">ค้นหา</a>
-                <a href="#add-chart-room" class="btn btn-success btn-lg rounded-pill mb-3 float-start" data-bs-toggle="modal">สร้างห้องแชท</a>
+                <a href="#search-chat-room" class="btn btn-primary btn-lg rounded-pill float-end" data-bs-toggle="modal">ค้นหา</a>
+                <a href="#add-chat-room" class="btn btn-success btn-lg rounded-pill mb-3 float-start" data-bs-toggle="modal">สร้างห้องแชท</a>
               </div>
               <br>
-            <?php if(isset($_SESSION['search_chart_room'])){ ?>
+            <?php if(isset($_SESSION['search_chat_room'])){ ?>
              <div class="alert alert-warning">
-               <h5 class="text-danger">คำค้นหาของคุณคือ : <?php echo $_SESSION['search_chart_room']; ?></h5>
+               <h5 class="text-danger">คำค้นหาของคุณคือ : <?php echo $_SESSION['search_chat_room']; ?></h5>
                <div class="ms-auto">
-                 <a href="sql/clear-session.php?search_chart_room=1" class="btn btn-danger">ยกการค้นหา</a>
+                 <a href="sql/clear-session.php?search_chat_room=1" class="btn btn-danger">ยกการค้นหา</a>
                </div>
              </div>
               <?php } ?>
               
-              <form action="sql/insert-chart-room.php" method="post" enctype="multipart/form-data">
-                <div class="modal fade" id="add-chart-room">
+              <form action="sql/insert-add-chat-room.php" method="post" enctype="multipart/form-data">
+                <div class="modal fade" id="add-chat-room">
                   <div class="modal-dialog modal-dialog-centered ">
                     <div class="modal-content">
                       <div class="modal-header bg-success text-light">
@@ -72,7 +72,7 @@ $row=mysqli_fetch_object($result);
 
                         <div class="form-group">
                           <label class="form-label">ชื่อห้องแชท</label>
-                          <input type="text" class="form-control" name="chart_room_name">
+                          <input type="text" class="form-control" name="chat_room_name">
                         </div>
                         
                       </div>
@@ -87,7 +87,7 @@ $row=mysqli_fetch_object($result);
               </form>
               
               <form action="sql/search.php" method="post" enctype="multipart/form-data">
-                <div class="modal fade" id="search-chart-room">
+                <div class="modal fade" id="search-chat-room">
                   <div class="modal-dialog modal-dialog-centered">
                     <div class="modal-content">
                       <div class="modal-header bg-primary text-light">
@@ -97,7 +97,7 @@ $row=mysqli_fetch_object($result);
                       <div class="modal-body">
                         <div class="input-group">
                           <input type="text" class="form-control" placeholder="ค้นหา" name="search">
-                          <input type="hidden" name="search_chart_room" value="1">
+                          <input type="hidden" name="search_chat_room" value="1">
                           <button class="btn btn-primary">ค้นหา</button>
                         </div>
                       </div>
@@ -113,26 +113,24 @@ $row=mysqli_fetch_object($result);
 
 
 
-              <h4 class="bg-primary card-header mb-2 text-light">แพ็คเกจทั้งหมด</h4>
+              <h4 class="bg-primary card-header mb-2 text-light">ห้องแชททั้งหมด</h4>
               <table class="table table-hover table-info">
                 <thead>
                   <tr class="table-primary">
                     <th class="text-center">#</th>
-                    <th>หัวเรื่องโปรโมชั้น</th>
-                    <th>ราคา / บาท</th>
-                    <th>เยี่ยมชม</th>
-                    <th>คะแนนของแพ็คเกจ</th>
-                    <th>ผู้สร้าง</th>
-                    <th>ตำสั่ง</th>
+                    <th>ชื่อห้องแชท</th>
+                    <th>คำสั่ง</th>
+                    <th>สถานะ</th>
                   </tr>
                 </thead>
                 <tbody>
                   <?php 
-                  if (isset($_SESSION['search_package'])) {
-                    $search_package=$_SESSION['search_package'];
-                    $sql="SELECT * FROM package,users WHERE users.id_user=package.id_user and pa_name LIKE '%$search_package%' ORDER BY package.id_pa ASC";
+                  $id_user=$_SESSION['id_user'];
+                  if (isset($_SESSION['search_chat_room'])) {
+                    $search_chat_room=$_SESSION['search_chat_room'];
+                    $sql="SELECT * FROM chat_room WHERE chat_room_name LIKE '%$search_chat_room%' AND user_general = '$id_user' AND char_room_status = 1 ORDER BY id_chat_room DESC";
                   }else{
-                    $sql = "SELECT * FROM package,users WHERE users.id_user=package.id_user  ORDER BY `package`.`id_pa` ASC";
+                    $sql = "SELECT * FROM chat_room WHERE user_general = '$id_user' ORDER BY id_chat_room DESC";
 
                   }
                 $result=mysqli_query($conn,$sql);
@@ -145,54 +143,18 @@ $row=mysqli_fetch_object($result);
                       
                    ?>
                   <tr>
-                    <th class="text-center"><?php echo $i++; ?></th>
-                    <td><?php echo $row->pa_name; ?></td>
-                    <td><?php echo $row->pa_price." บาท"; ?></td>
-                    <td><?php echo $row->pa_view." ครั้ง"; ?></td>
-                    <td> 3.4/5 (245 ครั้ง)</td>
-                    <td><?php echo $row->fname." ".$row->lname; ?></td>
-                    
+                    <td class="text-center"><?php echo $i++; ?></td>
+                    <td><?php echo $row->chat_room_name; ?></td>
+
                     <td>
-                      <a href="#show_package_<?php echo $i;?>" data-bs-toggle="modal" class="btn btn-primary btn-sm">ดู</a>
+                      <a href="users-chat-room.php?id_chat_room=<?php echo $row->id_chat_room;?>" class="btn btn-primary btn-sm">ห้องแชท</a>
+                      <a href="#" class="btn btn-danger btn-sm">ลบ</a>
+                    </td>
+                    <td>
+                      <span class="badge bg-success">สามารถแชทได้</span>
                     </td>
                   </tr>
-                  <div class="modal fade" id="show_package_<?php echo $i;?>">
-                    <div class="modal-dialog">
-                      <div class="modal-content">
-                        <div class="modal-header bg-primary text-light">
-                          <h4 class="modal-title">แพ็คเกจ</h4>
-                          <button class="btn-close" data-bs-dismiss="modal" type="buton"></button>
-                        </div>
-                        <div class="modal-body">
-
-                          <div class="form-group ">
-                            <label for="" class="form-label">ชื่อแพ็คเกจ</label>
-                            <input class="form-control" type="text" name="pa_name" disabled value="<?php echo $row->pa_name;?>">
-                          </div>
-                          
-                          <label class="form-label">ราคา</label>
-                          <div class="input-group">
-                            <input type="number" name="pa_price" class="form-control" disabled value="<?php echo $row->pa_price;?>">
-                            <span class="input-group-text" >บาท</span>
-                          </div>
-                          
-                          <div class="form-group">
-                            <label for="" class="form-label">รายละเอียด</label>
-                            <textarea class="form-control" name="pa_detail" disabled><?php echo $row->pa_detail; ?></textarea>
-                          </div>
-                          <div class="w-100">
-                            <img src="../uploads/<?php echo $row->pa_pic;?>" class="w-100 mt-4">
-                          </div>
-
-                        </div>
-
-                        <div class="modal-footer">
-                          <a href="#" class="btn btn-danger" data-bs-dismiss="modal">ปิด</a>
-                        </div>
-                      </div>
-                    </div>
-                  </div>
-                  
+                                  
 
                 <?php } ?>
                 </tbody>
