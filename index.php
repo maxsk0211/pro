@@ -1,7 +1,6 @@
 <?php 
 	session_start();
 	require('dbcon.php');
-	echo "string";
 ?>
 <!DOCTYPE html>
 <html lang="en">
