@@ -8,6 +8,11 @@
 	}elseif (isset($_GET['search_chat_room']) && ($_GET['search_chat_room']==1)){
 		unset($_SESSION['search_chat_room']);
 		header("location: ../users-add-chat-room.php");
+		
+	}elseif (isset($_GET['search_news']) && ($_GET['search_news']==1)) {
+		unset($_SESSION['search_news']);
+		header("location: ../users-add-news.php");
+
 	}
 	
 	

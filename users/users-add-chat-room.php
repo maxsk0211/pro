@@ -148,7 +148,7 @@ $row=mysqli_fetch_object($result);
 
                     <td>
                       <a href="users-chat-room.php?id_chat_room=<?php echo $row->id_chat_room;?>" class="btn btn-primary btn-sm">ห้องแชท</a>
-                      <a href="#" class="btn btn-danger btn-sm">ลบ</a>
+                      <a href="sql/del-chat-detail.php?id_chat_room=<?php echo $row->id_chat_room;?>" class="btn btn-danger btn-sm">ลบ</a>
                     </td>
                     <td>
                       <?php if($row->char_room_status==1){ ?>

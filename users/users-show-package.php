@@ -113,8 +113,6 @@ $row=mysqli_fetch_object($result);
                     <th class="text-center">#</th>
                     <th>หัวเรื่องโปรโมชั้น</th>
                     <th>ราคา / บาท</th>
-                    <th>เยี่ยมชม</th>
-                    <th>คะแนนของแพ็คเกจ</th>
                     <th>ผู้สร้าง</th>
                     <th>ตำสั่ง</th>
                   </tr>
@@ -141,8 +139,6 @@ $row=mysqli_fetch_object($result);
                     <th class="text-center"><?php echo $i++; ?></th>
                     <td><?php echo $row->pa_name; ?></td>
                     <td><?php echo $row->pa_price." บาท"; ?></td>
-                    <td><?php echo $row->pa_view." ครั้ง"; ?></td>
-                    <td> 3.4/5 (245 ครั้ง)</td>
                     <td><?php echo $row->fname." ".$row->lname; ?></td>
                     
                     <td>

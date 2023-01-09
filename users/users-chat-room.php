@@ -100,7 +100,7 @@ $row=mysqli_fetch_object($result);
              ?>
 
 
-             <div class="card   my-3 <?php if($id_user==$_SESSION['id_user']){echo "alert-info";}else{echo "alert-primary";} ?>" >
+             <div class="card my-3 <?php if($id_user==$_SESSION['id_user']){echo "alert-info";}else{echo "alert-primary";} ?>" >
                 <div class="card-body">
                   <div class="row  <?php if($id_user!=$_SESSION['id_user']){echo "d-flex flex-row-reverse";}?>">
                     <div class="col-11">

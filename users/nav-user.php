@@ -10,7 +10,10 @@
     <div class=" collapse navbar-collapse" id="navbarNavDropdown">
       <ul class="navbar-nav mx-auto ">
           <div class="nav-item my-2 mx-1">
-            <a href="user-show-package.php" class="btn btn-danger rounded-pill">แพ็คเกจ</a>
+            <a href="users-add-news.php" class="btn btn-primary rounded-pill">ข่าวสาร</a>
+          </div>
+          <div class="nav-item my-2 mx-1">
+            <a href="users-show-package.php" class="btn btn-danger rounded-pill">แพ็คเกจ</a>
           </div>
           <div class="nav-item my-2 mx-1">
             <a href="users-add-webboard.php" class="btn btn-info text-dark rounded-pill">กระดานสนทนา</a>
