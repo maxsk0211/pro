@@ -1,96 +1,106 @@
-<!DOCTYPE html>
-<html>
-<head>
-	<!-- import bootstrap cdn-->
-	<link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css"
-		integrity="sha384-JcKb8q3iqJ61gNV9KGb8thSsNjpSL0n8PARn9HuZOnIxN0hoP+VmmDGMN5t9UJ0Z"
-		crossorigin="anonymous">
-	<!-- import jquery cdn -->
-	<script src="https://code.jquery.com/jquery-3.5.1.slim.min.js" integrity="sha384-DfXdz2htPH0lsSSs5nCTpuj/zy4C+OGpamoFVy38MVBnE+IbbVYUew+OrCXaRkfj" crossorigin="anonymous">
-	</script>
-	<!-- import popper.js cdn -->
-	<script src=
-"https://cdn.jsdelivr.net/npm/popper.js@1.16.1/dist/umd/popper.min.js"
-		integrity=
-"sha384-9/reFTGAW83EW2RDu2S0VKaIzap3H66lZH81PoYlFhbGU+6BZp6G7niu735Sk7lN"
-		crossorigin="anonymous">
-	</script>
-	<!-- import javascript cdn -->
-	<script src=
-"https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/js/bootstrap.min.js"
-		integrity=
-"sha384-B4gt1jrGC7Jh4AgTPSdUtOBvfO8shuf57BaghqFfPlYxofvL8/KUEfYiJOMMV+rV"
-		crossorigin="anonymous">
-	</script>
-	<!-- CSS stylesheet -->
-	<style type="text/css">
-		html,
-		body {
-			height: 100%;
-		}
-		#green {
-			height: 100%;
-			background: green;
-			text-align: center;
-			color: black;
-		}
-	</style>
-</head>
-<body>
+<?php
+      session_start(); 
+      //$_SESSION["id_user"]=1;
+      //$_SESSION["user_lv"]=1;
+  if(!isset($_SESSION["user_lv"]) && $_SESSION['user_lv']==0 ){
+    header("location: ../index.php?");
+    exit();
+  }
 
 
-	<!-- top navbar -->
-	<nav class="navbar navbar-expand-lg navbar-light bg-primary">
-		<a class="navbar-brand" href="#">Navbar</a>
-		<!-- hamburger button that toggles the navbar-->
-		<button class="navbar-toggler" type="button"data-toggle="collapse" data-target="#navbarNavAltMarkup"	aria-controls="navbarNavAltMarkup" aria-expanded="false" aria-label="Toggle navigation">
-			<span class="navbar-toggler-icon"></span>
-		</button>
-		<!-- navbar links -->
-		<div class="collapse navbar-collapse" id="navbarNavAltMarkup">
-			<div class="navbar-nav">
-				<a class="nav-item nav-link active" href="#">Home</a>
-				<a class="nav-item nav-link" href="#">Features</a>
-				<a class="nav-item nav-link" href="#">Price</a>
-				<a class="nav-item nav-link" href="#">About</a>
-			</div>
-		</div>
-	</nav>
-	<!-- This container contains the sidebar
-			and main content of the page -->
-	<!-- h-100 takes the full height of the body-->
+require ('../dbcon.php');
+$id_user=$_SESSION["id_user"];
 
-	<div class="container-fluid h-100">
-		<div class="row h-100">
-			<div class="col-md-2 collapse navbar-collapse" id="navbarNavAltMarkup" >
-				<h4>Sidebar</h4>
-				<!-- Navigation links in sidebar-->
-				<a href="#">Link 1</a>
-				<br/>
-				<br/>
-				<a href="#">Link 2</a>
-				<br/>
-				<br/>
-				<a href="#">Link 3</a>
-				<br/>
-				<br/>
-				<a href="#">Link 4</a>
-				<br/>
-				<br/>
-			</div>
-			<!--Contains the main content
-					of the webpage-->
-			<div class="col-10" style="text-align: justify;">
-				Bootstrap is a free and open-source
-				tool collection for creating responsive
-				websites and web applications. It
-				is the most popular HTML, CSS, and
-				JavaScript framework for developing
-				responsive, mobile-first web sites.
-			</div>
-		</div>
-	</div>
+$sql="SELECT * FROM users where id_user='$id_user'";
+$result=mysqli_query($conn,$sql);
+$row=mysqli_fetch_object($result);
 
 
-</body>
+?>
+<!doctype html>
+<html lang="en">
+  <head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <title>จัดการห้องแชท - Happy Care Nursing Home - บ้านมีสูข</title>
+      <link href="../css/bootstrap.min.css" rel="stylesheet"> 
+      <script src="../js/bootstrap.js"></script> 
+
+  </head>
+  <body style="height: 5000px; padding-top: 70px;background: rgb(100, 40, 140);">
+
+    <div class="container-fluid">
+     
+     <?php include 'nav-admin.php'; ?>
+     <div class="row justify-content-center">
+       <div class="col-md-3 d-none d-lg-block">
+          <?php include 'nav-left.php'; ?>
+       </div>
+       <div class="col-md-9">
+          <div class="card border-primary border-4 rounded-pill my-2">
+            <div class="card-body">
+              <h3 class="card-header bg-primary text-light text-center rounded-pill">Dashboard</h3>
+            </div>
+          </div>
+
+            <div class="row  bg-light p-1">
+              <!-- card 1 -->
+              <div class="col-md-4 p-2">
+                <div class="card bg-primary">
+                  <div class="card-header h3 text-light">จำนวนผู้เข้าชม</div>
+                  <div class="card-body text-light">
+                    <div class="h1 float-end">
+                      <div class="badge bg-danger">
+                        99
+                      </div>
+                      ครั้ง
+                    </div>
+                  </div>
+                </div>
+              </div>
+              <!-- card 1 -->
+
+              <!-- card 2 -->
+              <div class="col-md-4 p-2">
+                <div class="card bg-danger">
+                  <div class="card-header h3 text-light">จำนวนผู้เข้าชม</div>
+                  <div class="card-body text-light">
+                    <div class="h1 float-end">
+                      <div class="badge bg-danger">
+                        99
+                      </div>
+                      ครั้ง
+                    </div>
+                  </div>
+                </div>
+              </div>
+              <!-- card 2 -->
+
+            </div>
+            <!-- end row -->
+
+
+
+
+       </div>
+       <!-- col-md-9 -->
+     </div>
+     <!-- row -->
+
+
+      
+
+
+
+
+
+    </div>
+
+  <script src="../js/jquery-3.6.1.min.js"></script>
+  <?php include '../alert-modal.php'; ?>
+  </body>
 </html>
+<?php 
+//session_destroy();
+
+?>
