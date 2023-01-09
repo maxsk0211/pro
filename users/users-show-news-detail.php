@@ -34,16 +34,10 @@ require ('../dbcon.php');
   <div class="container-fluid">
     <?php include 'nav-user.php'; ?>
 
-    <?php 
-      $id_news=$_GET['id_news'];
-      $sql="SELECT * FROM news,users WHERE news.id_user=users.id_user AND news.id_news='$id_news'";
-      $result=mysqli_query($conn,$sql);
-      $row=mysqli_fetch_object($result);
 
-     ?>
      <div class="row justify-content-center">
        <div class="col-md-3 d-none d-lg-block">
-         <?php include 'nav-left.php'; ?>
+         <?php include 'nav-left.php';?>
        </div>
        <div class="col-md-9">
          <a href="users-add-news.php" class="btn btn-warning btn-lg mb-3" title=""> <--- back</a>
@@ -52,6 +46,13 @@ require ('../dbcon.php');
               <h3 class="card-header bg-primary text-light text-center rounded-pill">จัดการข่าวสาร</h3>
             </div>
           </div>
+    <?php 
+      $id_news=$_GET['id_news'];
+      $sql="SELECT * FROM news,users WHERE news.id_user=users.id_user AND news.id_news='$id_news'";
+      $result=mysqli_query($conn,$sql);
+      $row=mysqli_fetch_object($result);
+
+     ?>
         <div class="card border-success">
           <div class="card-body">
             <h2 class="text-center"><?php echo $row->news_topic; ?></h2>
@@ -94,7 +95,11 @@ require ('../dbcon.php');
 
               </div>
               <p class="text-center mt-2 h5">วันที่สร้าง : <span class="badge bg-primary"><?php echo $row->comment_datetime; ?></span></p>
-              <a href="sql/del-comment-news.php?id_com_news=<?php echo $row->id_com_news;?>&id_news=<?php echo $_GET['id_news'];?>" class="btn btn-danger float-end">ลบคอมเม้น</a>
+              
+              <?php if($row->id_user==$_SESSION['id_user']){?>
+                  <a href="sql/del-comment-news.php?id_com_news=<?php echo $row->id_com_news;?>&id_news=<?php echo $_GET['id_news'];?>" class="btn btn-danger float-end">ลบคอมเม้น</a>
+                    
+              <?php } ?>
 
             </div>
           </div>

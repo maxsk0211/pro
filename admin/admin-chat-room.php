@@ -125,13 +125,13 @@ $row=mysqli_fetch_object($result);
               <div class="card alert-success my-3">
                 <div class="card-body">
                   <div class="row">
-                    <div class="col-1">
+                    <div class="col-2">
                       <div class="d-flex flex-column align-items-center ">
                         <img src="../uploads/<?php echo $row->pic;?>" alt="" class="w-100 rounded-pill">
                         <span class="badge bg-primary mt-1"><?php echo $row->fname." ".$row->lname; ?></span>
                       </div>
                     </div>
-                    <div class="col-11">
+                    <div class="col-10">
                       <form action="sql/insert-chat-detail.php" method="post" enctype="multipart/form-data">                      
                           <textarea class="form-control" name="chat_topic" <?php if($row_chat_room->char_room_status==0){ echo "disabled";}?>></textarea>
                           <input type="hidden" name="id_user" value="<?php echo $_SESSION['id_user'];?>">
@@ -143,6 +143,7 @@ $row=mysqli_fetch_object($result);
                   
                 </div>
               </div>
+              
               <div class="text-center">
                 <a href="sql/end-chat.php?id_chat_room=<?php echo $_GET['id_chat_room'];?>&url=admin-chat-room.php" class="btn btn-danger btn-lg <?php if($row_chat_room->char_room_status==0){ echo "disabled";}?>" >จบการสนทนา</a>  
               </div>
