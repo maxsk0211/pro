@@ -165,12 +165,53 @@ $row=mysqli_fetch_object($result);
                     <td><?php echo $row->fname." ".$row->lname; ?></td>
                     
                     <td>
-                      <a href="#show_news_<?php echo $i;?>" class="btn btn-primary btn-sm">ดู</a>
+                      <a href="#show-package<?php echo $i;?>" data-bs-toggle="modal" class="btn btn-primary btn-sm">ดู</a>
                       <a href="#edit-package<?php echo $i;?>" data-bs-toggle="modal" class="btn btn-warning btn-sm">แก้ไข</a>
                       <a href="sql/del-package.php?id_pa=<?php echo $row->id_pa;?>" class="btn btn-danger btn-sm" onclick="return confirm('ยืนยันการลบข้อมูล ?');">ลบ</a>
                     </td>
                   </tr>
+                  <!-- show -->
+                  <div class="modal fade" id="show-package<?php echo $i;?>">
+                    <div class="modal-dialog">
+                      <div class="modal-content">
+                        <div class="modal-header bg-primary">
+                          <h4 class="modal-title">เนื้อหาโปรโมชั้น</h4>
+                          <button class="btn-close" data-bs-dismiss="modal" type="button"></button>
+                        </div>
+                        <div class="modal-body">
 
+                          
+                        <div class="form-group ">
+                          <label for="" class="form-label">ชื่อแพ็คเกจ</label>
+                          <input class="form-control" type="text" name="pa_name" disabled value="<?php echo $row->pa_name;?>">
+                        </div>
+                        
+                        <label class="form-label">ราคา</label>
+                        <div class="input-group">
+                          <input type="number" name="pa_price" class="form-control" disabled value="<?php echo $row->pa_price;?>">
+                          <span class="input-group-text">บาท</span>
+                        </div>
+                        
+                        <div class="form-group">
+                          <label for="" class="form-label">รายละเอียด</label>
+                          <textarea class="form-control" disabled name="pa_detail"><?php echo $row->pa_detail; ?></textarea>
+                        </div>
+
+
+                        <div class="mt-3">
+                          <label class="input-group-text">รูปภาพ</label>
+                          <img src="../uploads/<?php echo $row->pa_pic; ?>" class="w-100">
+                        </div>
+
+                        </div>
+                        <div class="modal-footer">
+                          <button class="btn btn-danger" type="button" data-bs-dismiss="modal">ปิด</button>
+                        </div>
+                      </div>
+                    </div>
+                  </div>
+                  <!-- end show -->
+                  <!-- edit -->
                   <form action="sql/edit-package.php" method="post" enctype="multipart/form-data">
                   <div class="modal fade" id="edit-package<?php echo $i;?>">
                     <div class="modal-dialog">
@@ -218,7 +259,7 @@ $row=mysqli_fetch_object($result);
                     </div>
                   </div>
                   </form>
-
+                  <!-- end edit -->
                 <?php } ?>
                 </tbody>
               </table>

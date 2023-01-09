@@ -97,7 +97,7 @@ require ('../dbcon.php');
               <p class="text-center mt-2 h5">วันที่สร้าง : <span class="badge bg-primary"><?php echo $row->comment_datetime; ?></span></p>
               
               <?php if($row->id_user==$_SESSION['id_user']){?>
-                  <a href="sql/del-comment-news.php?id_com_news=<?php echo $row->id_com_news;?>&id_news=<?php echo $_GET['id_news'];?>" class="btn btn-danger float-end">ลบคอมเม้น</a>
+                  <a href="sql/del-comment-news.php?id_com_news=<?php echo $row->id_com_news;?>&id_news=<?php echo $_GET['id_news'];?>" class="btn btn-danger float-end" onclick="return confirm('ยืนยันการลบข้อมูล ?');">ลบคอมเม้น</a>
                     
               <?php } ?>
 
