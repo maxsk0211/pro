@@ -7,6 +7,7 @@
 	if ($result) {
 		$_SESSION['ok']="ลบห้องสนทนาสำเร็จ";
 		header("location: ../users-add-chat-room.php");
+		exit();
 	}
 
 
