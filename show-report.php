@@ -4,7 +4,7 @@
 						<div class="alert bg-secondary rounded-pill border-4 border-light h4 text-center text-light">แบบสอบถาม</div>
 
 
-						<div class="card">
+					<div class="card">
             <div class="card-body">
               <h4 class="bg-primary card-header mb-2 text-light">แบบสอบถามทั้งหมด</h4>
               <table class="table table-hover table-info">
@@ -43,6 +43,7 @@
               </table>
             </div>
           </div>
+        <a href="show-all-report.php" class="btn btn-primary d-grid mt-2">ดูทั้งหมด</a>
 
 
 

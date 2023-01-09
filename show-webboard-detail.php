@@ -37,27 +37,28 @@
 
                 <?php 
                 $id_webboard=$_GET['id_webboard'];
-                $sql = " SELECT * FROM webboard,users WHERE users.id_user=webboard.id_user and webboard.id_webboard = '$id_webboard' ";
+                $sql = " SELECT * FROM webboard,users WHERE users.id_user=webboard.id_user and webboard.id_webboard = '$id_webboard' ORDER BY webboard.id_webboard DESC";
                 $result=mysqli_query($conn,$sql);
                 $row = mysqli_fetch_object($result) 
                    ?>
-                <div class="col-md-3 form-group">
-                  <div class="card text-center d-block ">
-                   <img src="uploads/<?php echo $row->pic;?>" class="w-100 p-3 ">
+                <div class="col-3 form-group">
+                  <div class="card text-center d-block alert-success">
+                   <img src="uploads/<?php echo $row->pic;?>" class="w-100 p-3 rounded-pill">
                     <div class="card-body">
-                      <label class="form-label"><?php echo $row->fname." ".$row->lname; ?></label>
+                      <p class="form-label badge bg-success fs-6"><?php echo $row->fname." ".$row->lname; ?></p><br>
+                      <p class="form-label badge fs-6 <?php if($row->user_level==1){echo "bg-danger";}else{echo "bg-warning";} ?>"><?php echo $row->email; ?></p>
                     </div>
                   </div>
                   
                 </div>
-                <div class="col-md-9">
+                <div class="col-9">
                     <h4>เรื่อง : <?php echo $row->topic_webboard; ?></h4>
                     <hr>
                     <p class="h5"><?php echo $row->detail_webboard; ?></p>
                     <img src="uploads/<?php echo $row->pic_webboard;?>" class="w-100 p-3 ">
                 </div>
-                <p class="text-center">วันที่สร้าง : <?php echo $row->webboard_datetime; ?></p>
-                <p class="text-center">เยี่ยมชม : <?php echo $row->view_webboard; ?> ครั้ง</p>
+                <p class="text-center h5">วันที่สร้าง : <span class="badge bg-primary"><?php echo $row->webboard_datetime; ?></span></p>
+                <p class="text-center h5">เยี่ยมชม : <span class="badge bg-danger"><?php echo $row->view_webboard; ?></span> ครั้ง</p>
               </div>
             </div>
           </div>
@@ -65,8 +66,7 @@
           <?php 
           $id_webboard=$_GET['id_webboard'];
 
-          $sql="SELECT * FROM comment_webboard,users WHERE id_webboard='$id_webboard' and 
-          comment_webboard.id_user=users.id_user ORDER BY comment_webboard.comment_datetime ASC";
+          $sql="SELECT * FROM comment_webboard,users WHERE id_webboard='$id_webboard' and comment_webboard.id_user=users.id_user ORDER BY comment_webboard.comment_datetime ASC";
           $result=mysqli_query($conn,$sql);
 
             while( $row = mysqli_fetch_object($result)){?>
@@ -75,23 +75,24 @@
             <div class="card-body">
               <div class="row">
 
-                <div class="col-md-3 form-group">
-                  <div class="card text-center d-block ">
-                   <img src="uploads/<?php echo $row->pic;?>" class="w-100 p-3 ">
+                <div class="col-3 form-group">
+                  <div class="card text-center d-block alert-success">
+                   <img src="uploads/<?php echo $row->pic;?>" class="w-100 p-3 rounded-pill ">
                     <div class="card-body">
-                      <label class="form-label"><?php echo $row->fname." ".$row->lname; ?></label>
+                      <p class="form-label badge bg-success fs-6"><?php echo $row->fname." ".$row->lname; ?></p><br>
+                      <p class="form-label badge fs-6 <?php if($row->user_level==1){echo "bg-danger";}else{echo "bg-warning";} ?>"><?php echo $row->email; ?></p>
                     </div>
                   </div>
                   
                 </div>
-                <div class="col-md-9">
+                <div class="col-9 alert-warning">
                     <p class="mt-4 h5"><?php echo $row->comment; ?></p>
 
                 </div>
 
               </div>
-              <p class="text-center">วันที่สร้าง : <?php echo $row->comment_datetime; ?></p>
-
+              <p class="text-center h5">วันที่สร้าง : <span class="badge bg-primary"><?php echo $row->comment_datetime; ?></span></p>
+                
 
             </div>
           </div>

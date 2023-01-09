@@ -53,7 +53,7 @@
                     <td><?php echo $row->report_detail; ?></td> 
                     <td>
 
-                      <!-- <a href="show-report-index.php?id_report=<?php echo $row->id_report;?>" class="btn btn-success btn-sm">รายงาน</a> -->
+                      <a href="show-report-index.php?id_report=<?php echo $row->id_report;?>" class="btn btn-success btn-sm">รายงาน</a>
                     </td>
                   </tr>
 
