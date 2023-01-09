@@ -23,7 +23,7 @@
   <body class="bg-secondary" style="height: 5000px; padding-top: 70px;">
   	<!-- main container -->
   <div class="container-fluid">
-    <?php include 'show-Nav.php'; ?>
+    <?php include 'nav-index-all.php'; ?>
 
     <?php 
       $id_news=$_GET['id_news'];
