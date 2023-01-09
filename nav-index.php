@@ -50,14 +50,14 @@
 
 <!-- start Modal Login and register -->
 
-	<div class="modal fade" id="login">
+<div class="modal fade" id="login">
 	  <div class="modal-dialog modal-dialog-centered modal-lg">
 	    <div class="modal-content">
-	      <div class="modal-header">
-	        <h1 class="modal-title fs-5">ระบบสมาชิก</h1>
+	      <div class="modal-header bg-success">
+	        <h1 class="modal-title fs-5 text-light">ระบบสมาชิก</h1>
 	        <button type="button" class="btn-close" data-bs-dismiss="modal"></button>
 	      </div>
-	      <div class="modal-body">
+	      <div class="modal-body alert ">
 
 				  	<div class="row">
 				  		<div class="col-md-6">
