@@ -10,6 +10,5 @@
 		$_SESSION['ok']="จบการสนทนา";
 		$url="../".$_GET['url']."?id_chat_room=".$id_chat_room;
 		header("location: $url");
-
 	}
  ?>
