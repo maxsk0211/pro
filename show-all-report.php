@@ -52,8 +52,7 @@
                     <td><?php echo $row->view_report." ครั้ง";?></td>
                     <td><?php echo $row->report_detail; ?></td> 
                     <td>
-
-                      <a href="show-report-index.php?id_report=<?php echo $row->id_report;?>" class="btn btn-success btn-sm">รายงาน</a>
+                      <a href="show-report-detail.php?id_report=<?php echo $row->id_report;?>" class="btn btn-success btn-sm">รายงาน</a>
                     </td>
                   </tr>
 
