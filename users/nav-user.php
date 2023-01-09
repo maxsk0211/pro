@@ -54,6 +54,9 @@
               <div class="mt-3">
                   <a href="edit-user.php" class="btn btn-warning rounded-pill">แก้ไขข้อมูลส่วนตัว</a>
               </div>
+            <div class="mt-2">
+              <a href="users-add-chat-room.php" class="btn btn-success rounded-pill">สนทนา</a>
+            </div>
               <div class="mt-1">
                   <a href="../logout.php" class="btn btn-danger rounded-pill">ออกจากระบบ</a>
               </div>

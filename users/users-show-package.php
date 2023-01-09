@@ -59,47 +59,29 @@ $row=mysqli_fetch_object($result);
              </div>
               <?php } ?>
               
-              <form action="sql/insert-package.php" method="post" enctype="multipart/form-data">
-                <div class="modal fade" id="add-package">
-                  <div class="modal-dialog modal-dialog-centered ">
+            <form action="sql/search.php" method="post" enctype="multipart/form-data">
+                <div class="modal fade" id="search-package">
+                  <div class="modal-dialog modal-dialog-centered">
                     <div class="modal-content">
-                      <div class="modal-header bg-success text-light">
-                        <h4 class="modal-title">สร้างแพ็คเกจ</h4>
+                      <div class="modal-header bg-primary text-light">
+                        <h4 class="modal-title">การค้นหาแพ็คเกจ</h4>
                         <button class="btn-close" data-bs-dismiss="modal" type="button"></button>
                       </div>
                       <div class="modal-body">
-
-                        <div class="form-group ">
-                          <label for="" class="form-label">ชื่อแพ็คเกจ</label>
-                          <input class="form-control" type="text" name="pa_name"></input>
-                        </div>
-                        
-                        <label class="form-label">ราคา</label>
                         <div class="input-group">
-                          <input type="number" name="pa_price" class="form-control">
-                          <span class="input-group-text">บาท</span>
+                          <input type="text" class="form-control" placeholder="ค้นหา" name="search">
+                          <input type="hidden" name="package" value="1">
+                          <button class="btn btn-primary">ค้นหา</button>
                         </div>
-                        
-                        <div class="form-group">
-                          <label for="" class="form-label">รายละเอียด</label>
-                          <textarea class="form-control" name="pa_detail"></textarea>
-                        </div>
-                        <div class="input-group me-3">
-                          <label for="" class="input-group-text">เลือกรูปปก</label>
-                          <input type="file" name="pa_pic" class="form-control">
-                        </div>
-                        <br>
                       </div>
                       <div class="modal-footer">
-                        <input type="hidden" name="id_user" value="<?php echo $_SESSION["id_user"]; ?>">
-                        <button type="submit" class="btn btn-success float-end">บันทึกข้อมูล</button>
                         <button class="btn btn-danger" data-bs-dismiss="modal" type="button">ปิด</button>
+                        
                       </div>
                     </div>
                   </div>
                 </div>
               </form>
-              <!-- end modal add package -->
 
 
 
@@ -107,7 +89,7 @@ $row=mysqli_fetch_object($result);
 
 
               <h4 class="bg-primary card-header mb-2 text-light">แพ็คเกจทั้งหมด</h4>
-              <table class="table table-hover table-info">
+              <!-- <table class="table table-hover table-info">
                 <thead>
                   <tr class="table-primary">
                     <th class="text-center">#</th>
@@ -185,7 +167,39 @@ $row=mysqli_fetch_object($result);
 
                 <?php } ?>
                 </tbody>
-              </table>
+              </table> -->
+
+
+         <div class="row">
+            <?php 
+            if (isset($_SESSION['search_package'])) {
+                    $search_package=$_SESSION['search_package'];
+                    $sql="SELECT * FROM package,users WHERE users.id_user=package.id_user and pa_name LIKE '%$search_package%' ORDER BY package.id_pa ASC";
+                  }else{
+                    $sql = "SELECT * FROM package,users WHERE users.id_user=package.id_user  ORDER BY `package`.`id_pa` ASC";
+
+                  }
+            $result=mysqli_query($conn,$sql);
+            
+              while($row=mysqli_fetch_object($result)){ ?>
+                <div class="col-md-4 bg-light p-3">
+                  <div class="card alert-danger">
+                    <img src="../uploads/<?php echo $row->pa_pic;?>" alt="">
+                    <div class="card-body">
+                      <h5 class="card-title alert alert-success "><?php echo $row->pa_name ?></h5>
+                      <p class="card-text alert alert-warning"><?php echo $row->pa_detail; ?></p>
+                      <strong class="alert bg-danger d-flex text-light h4">ราคา <?php echo $row->pa_price; ?> บาท</strong>
+                    </div>
+                  </div>
+                </div>
+             <?php }              
+             ?>
+          </div>
+
+
+
+
+
             </div>
           </div>
           <!-- card border-primary -->

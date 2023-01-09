@@ -15,6 +15,11 @@
 		$_SESSION['search_news']=$search_news;
 		header("location: ../users-add-news.php");
 
+	}elseif (isset($_POST['package']) && ($_POST['package']==1)) {
+		$search_package=$_POST['search'];
+		$_SESSION['search_package']=$search_package;
+		header("location: ../users-show-package.php");
+
 	}
 
  ?>

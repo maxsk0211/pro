@@ -44,7 +44,7 @@ require ('../dbcon.php');
           </div>
 
 
-        <div class="card border-primary">
+          <div class="card border-primary">
             <div class="card-body">
               <div class="form-group mb-5">
                 <a href="#search-news" class="btn btn-primary btn-lg rounded-pill float-end" data-bs-toggle="modal">ค้นหา</a>
@@ -87,7 +87,7 @@ require ('../dbcon.php');
               
 
               <h4 class="bg-primary card-header mb-2 text-light">ข่าวสารทั้งหมด</h4>
-              <table class="table table-hover">
+             <!--  <table class="table table-hover">
                 <thead>
                   <tr class="table-primary">
                     <th class="text-center">#</th>
@@ -170,7 +170,46 @@ require ('../dbcon.php');
 
                 <?php } ?>
                 </tbody>
-              </table>
+              </table> -->
+              
+              <div class="row">
+                
+              
+              <?php 
+
+                if (isset($_SESSION['search_news'])) {
+                  $search_news=$_SESSION['search_news'];
+                $sql = "SELECT * FROM news,users where users.id_user=news.id_user and news_topic LIKE '%$search_news%'";
+                  
+                }else{
+                $sql = "SELECT * FROM news,users where users.id_user=news.id_user";
+
+                }
+
+                // ตึงข้อมูล
+                $result=mysqli_query($conn,$sql);
+                while($row=mysqli_fetch_object($result)){
+               ?>
+            <div class="col-sm-4 mt-2">
+              <div class="card alert-info">
+                <img src="../uploads/<?php echo $row->news_pic;?>" class="card-img-top" alt="...">
+                <div class="card-body">
+                  <h5 class="card-title"><?php echo $row->news_topic;?></h5>
+                  <p class="card-text"><?php echo $row->news_topic_detail;?></p>
+                  <a href="users-show-news-detail.php?id_news=<?php echo $row->id_news;?>" class="btn btn-success float-end">ดูเพิ่มเติม</a>
+                </div>
+              </div>  
+            </div>
+
+
+             <?php } ?>
+
+</div>
+
+
+
+
+
             </div>
           </div>
           

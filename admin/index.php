@@ -45,13 +45,18 @@ $row=mysqli_fetch_object($result);
 
             <div class="row  bg-light">
               <!-- card 1 -->
+              <?php 
+              $sql="SELECT * FROM web_history_count WHERE id_web_count = 1";
+              $result=mysqli_query($conn,$sql);
+              $row=mysqli_fetch_object($result);
+               ?>
               <div class="col-md-4 p-2">
                 <div class="card bg-primary">
                   <div class="card-header h3 text-light">จำนวนผู้เข้าชม</div>
                   <div class="card-body text-light">
                     <div class="h1 float-end">
                       <div class="badge bg-danger">
-                        99
+                        <?php echo $row->web_count; ?>
                       </div>
                       ครั้ง
                     </div>
@@ -61,13 +66,18 @@ $row=mysqli_fetch_object($result);
               <!-- card 1 -->
 
               <!-- card 2 -->
+              <?php 
+              $sql="select count(id_user) as count from users";
+              $result=mysqli_query($conn,$sql);
+              $row=mysqli_fetch_object($result);
+               ?>
               <div class="col-md-4 p-2">
                 <div class="card bg-warning">
                   <div class="card-header h3 text-light">จำนวนบัญชีผู้ใช้</div>
                   <div class="card-body text-light">
                     <div class="h1 float-end">
                       <div class="badge bg-danger">
-                        99
+                        <?php echo $row->count; ?>
                       </div>
                       บัญชี
                     </div>
@@ -77,13 +87,18 @@ $row=mysqli_fetch_object($result);
               <!-- card 2 -->
 
                <!-- card 3 -->
+               <?php 
+               $sql="SELECT count(id_chat_room) as count FROM chat_room";
+               $result=mysqli_query($conn,$sql);
+               $row=mysqli_fetch_object($result);
+                ?>
               <div class="col-md-4 p-2">
                 <div class="card bg-success">
                   <div class="card-header h3 text-light">จำนวนห้องสนทนา</div>
                   <div class="card-body text-light">
                     <div class="h1 float-end">
                       <div class="badge bg-danger">
-                        99
+                        <?php echo $row->count; ?>
                       </div>
                       ห้อง
                     </div>
@@ -94,10 +109,37 @@ $row=mysqli_fetch_object($result);
 
               <div class="p-3">
                 <h4 class="bg-danger card-header text-light">ประวัติการเข้าสู่ระบบ</h4>
-                
+              <table class="table table-hover table-warning mt-2">
+                <thead>
+                  <tr class="table-danger">
+                    <th class="text-center">#</th>
+                    <th>ip</th>
+                    <th>วันและเวลา</th>
+                    <th>ด้วยอุปกรณ์</th>
+                  </tr>
+                </thead>
+                <tbody>
+                  <?php 
+                  $id_user=$_SESSION['id_user'];
+                  $sql="SELECT * FROM log_login WHERE id_user = '$id_user' ORDER BY detatime_log DESC";
+                  $result=mysqli_query($conn,$sql);
+                  
+                  $i=1;
+
+                    while($row=mysqli_fetch_object($result)){
+                   ?>
+
+                  <tr>
+                    <td class="text-center"><?php echo $i++; ?></td>
+                    <td><?php echo $row->ip; ?></td>
+                    <td><?php echo $row->detatime_log; ?></td>
+                    <td></td>
+                  </tr>
+                <?php } ?>
+                </tbody>
               </div>
             
-          
+
 
             </div>
             <!-- end row -->

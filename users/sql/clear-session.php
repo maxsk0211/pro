@@ -13,6 +13,10 @@
 		unset($_SESSION['search_news']);
 		header("location: ../users-add-news.php");
 
+	}elseif(isset($_GET['search_package']) && ($_GET['search_package']==1)){
+		unset($_SESSION['search_package']);
+		header("location: ../users-show-package.php");
+
 	}
 	
 	
