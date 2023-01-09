@@ -9,19 +9,25 @@
  
     <div class=" collapse navbar-collapse" id="navbarNavDropdown">
       <ul class="navbar-nav mx-auto ">
-          <div class="nav-item my-2 mx-1">
+        
+          <li class="nav-item d-none d-lg-block navbar-brand">
+            <a class="nav-link mx-2" href="index.php">
+              <img src="../img/logo.png" height="50" />
+            </a>
+          </li>
+          <div class="nav-item m-2 mt-2">
             <a href="admin-add-news.php" class="btn btn-primary rounded-pill">จัดการข่าวสาร</a>
           </div>
-          <div class="nav-item my-2 mx-1">
+          <div class="nav-item m-2 mt-2">
             <a href="admin-add-package.php" class="btn btn-danger rounded-pill">จัดการแพ็คเกจ</a>
           </div>
-          <div class="nav-item my-2 mx-1">
+          <div class="nav-item m-2 mt-2">
             <a href="admin-add-webboard.php" class="btn btn-info text-dark rounded-pill">จัดการกระดานสนทนา</a>
           </div>
-          <div class="nav-item my-2 mx-1">
+          <div class="nav-item m-2 mt-2">
             <a href="admin-add-admin.php" class="btn btn-warning rounded-pill">จัดการผู้ใช้งาน</a>
           </div>
-          <div class="nav-item my-2 mx-1">
+          <div class="nav-item m-2 mt-2">
             <a href="admin-add-report.php" class="btn btn-secondary rounded-pill">จัดการแบบสอบถาม</a>
           </div>
 

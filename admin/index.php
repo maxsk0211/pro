@@ -43,7 +43,7 @@ $row=mysqli_fetch_object($result);
             </div>
           </div>
 
-            <div class="row  bg-light p-1">
+            <div class="row  bg-light">
               <!-- card 1 -->
               <div class="col-md-4 p-2">
                 <div class="card bg-primary">
@@ -62,25 +62,45 @@ $row=mysqli_fetch_object($result);
 
               <!-- card 2 -->
               <div class="col-md-4 p-2">
-                <div class="card bg-danger">
-                  <div class="card-header h3 text-light">จำนวนผู้เข้าชม</div>
+                <div class="card bg-warning">
+                  <div class="card-header h3 text-light">จำนวนบัญชีผู้ใช้</div>
                   <div class="card-body text-light">
                     <div class="h1 float-end">
                       <div class="badge bg-danger">
                         99
                       </div>
-                      ครั้ง
+                      บัญชี
                     </div>
                   </div>
                 </div>
               </div>
               <!-- card 2 -->
 
+               <!-- card 3 -->
+              <div class="col-md-4 p-2">
+                <div class="card bg-success">
+                  <div class="card-header h3 text-light">จำนวนห้องสนทนา</div>
+                  <div class="card-body text-light">
+                    <div class="h1 float-end">
+                      <div class="badge bg-danger">
+                        99
+                      </div>
+                      ห้อง
+                    </div>
+                  </div>
+                </div>
+              </div>
+              <!-- card 3 -->
+
+              <div class="p-3">
+                <h4 class="bg-danger card-header text-light">ประวัติการเข้าสู่ระบบ</h4>
+                
+              </div>
+            
+          
+
             </div>
             <!-- end row -->
-
-
-
 
        </div>
        <!-- col-md-9 -->
