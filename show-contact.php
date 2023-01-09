@@ -1,4 +1,5 @@
-
+<?php
+  require 'dbcon.php';
 ?>
 <!DOCTYPE html>
 <html lang="en">
@@ -13,7 +14,7 @@
 	<script src="js/bootstrap.js"></script> 
 
   </head>
-  <body class="bg-secondary" style="padding-top:20px ;">
+  <body style="height: 5000px; padding-top: 50px;background: rgb(100, 40, 140);">
 	  
 	  <div class="container-fluid">
      <?php include 'nav-index-all.php'; ?>
@@ -21,11 +22,7 @@
   <div class="row my-5 justify-content-center ">
     <div class="col-md-12 col-lg-8 col-sm-10">
 
-          <div class="card border-4 border-primary my-2 rounded-pill">
-            <div class="card-body">
-              <h3 class="card-header bg-info text-center rounded-pill">ติดต่อ - contact</h3>
-            </div>
-          </div>
+          <div class="alert bg-warning rounded-pill border-4 border-light h4 text-center">ติดต่อ - contact</div>
         
           <div class="card">
             <div class="card-body">
