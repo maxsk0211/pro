@@ -1,6 +1,6 @@
 	<nav class="navbar navbar-expand-lg navbar-dark p-3 fixed-top" id="headerNav" style="background-color: rgb(23,165, 137);">
   <div class="container-fluid">
-    <a class="navbar-brand d-block d-lg-none" href="#">
+    <a class="navbar-brand d-block d-lg-none" href="index.php">
       <img src="img/logo.png" height="50" />
     </a>
     <button class="navbar-toggler bg-success" type="button" data-bs-toggle="collapse" data-bs-target="#navbarNavDropdown" aria-controls="navbarNavDropdown" aria-expanded="false" aria-label="Toggle navigation">
@@ -165,14 +165,26 @@
 	</div>
 
 	<!-- End Modal Login and register -->
+<?php 
+	$sql="UPDATE web_history_count SET web_count = (web_count + 1) WHERE id_web_count = 1";
+	mysqli_query($conn,$sql);
+
+ ?>
 
 	<!--  Navbar  top-->
     <nav class="navbar fixed-bottom" style="background-color: rgb(23,165, 137);"> 
-			<div class="containero">
-				<strong>Copyright - Happy Care Nursing Home - บ้านมีสูข / โทร . 075-611-797 / Line official : @HappyCareNursingHome</strong>
+			<div class="mx-auto">
+				<strong>Copyright - Happy Care Nursing Home - บ้านมีสูข / โทร . 075-611-797 / Line official : @HappyCareNursingHome </strong>
+				<br>
+				<div class="text-center">
+					<?php 
+					$sql="SELECT * FROM web_history_count WHERE id_web_count = 1";
+					$result=mysqli_query($conn,$sql);
+					$row=mysqli_fetch_object($result);
+					 ?>
+					<strong>จำนวนผู้เข้าชม <span class="badge bg-danger"><?php echo $row->web_count;?></span> ครั้ง</strong>
+				</div>
 				
 			</div>
     </nav>
 <!--  Navbar top-->
-
-
