@@ -20,7 +20,7 @@
 	    <script src="js/bootstrap.js"></script> 
 
 </head>
-  <body class="bg-secondary" style="height: 5000px; padding-top: 70px;">
+  <body style="height: 5000px; padding-top: 70px;background: rgb(100, 40, 140);">
   	<!-- main container -->
   <div class="container-fluid">
     <?php include 'nav-index-all.php'; ?>
@@ -35,7 +35,16 @@
 <!-- start Carousel Pr -->
   <div class="row my-5 justify-content-center ">
     <div class="col-md-12 col-lg-8 col-sm-10">
-      <div class="alert alert-success h3">ประชาสัมพันธ์</div>
+
+      <div class="alert bg-primary text-center h4 text-light rounded-pill border-4 border-light">News - ข่าวสาร</div>
+
+    <?php 
+      $id_news=$_GET['id_news'];
+      $sql="SELECT * FROM news,users WHERE news.id_user=users.id_user AND news.id_news='$id_news'";
+      $result=mysqli_query($conn,$sql);
+      $row=mysqli_fetch_object($result);
+
+     ?>
         <div class="card border-success">
           <div class="card-body">
             <h2 class="text-center"><?php echo $row->news_topic; ?></h2>
@@ -43,59 +52,46 @@
             <p><?php echo $row->news_topic_detail; ?></p>
             <img src="uploads/<?php echo $row->news_pic;?>" class="w-100">
             <hr>
-            <strong>ผู้เขียนบทความ : <?php echo $row->fname." ".$row->lname; ?></strong>
-             <p class="text-center h4">จำนวนผู้เข้าชม <?php echo $row->news_view; ?> ครั้ง</p>
+            <strong class="h5">ผู้เขียนบทความ : <span class="badge bg-primary text-light"> <?php echo $row->fname." ".$row->lname; ?></span></strong>
+             <p class="text-center h4">จำนวนผู้เข้าชม <span class="badge bg-danger"><?php echo $row->news_view; ?></span> ครั้ง</p>
           </div>
         </div>
-          <br>
          
-<!--           <div class="card">
+                  <?php 
+          $id_news=$_GET['id_news'];
+
+          $sql="SELECT * FROM comment_news,users WHERE id_news='$id_news' and 
+          comment_news.id_user=users.id_user ORDER BY comment_news.comment_datetime ASC";
+          $result=mysqli_query($conn,$sql);
+
+            while( $row = mysqli_fetch_object($result)){?>
+            
+          <div class="card my-1">
             <div class="card-body">
               <div class="row">
 
-                <div class="col-md-3 ">
-                  <div class="card text-center d-block">
-                   <img src="https://cdn.pixabay.com/photo/2014/04/03/10/32/user-310807_960_720.png" class="w-50 mt-2">
+                <div class="col-3 form-group">
+                  <div class="card text-center d-block alert-success">
+                   <img src="uploads/<?php echo $row->pic;?>" class="w-100 p-3 rounded-pill">
                     <div class="card-body">
-                      <label class="form-label">ผู้ใช้งานทั่วไป</label>
+                      <p class="form-label badge bg-success fs-6"><?php echo $row->fname." ".$row->lname; ?></p><br>
+                      <p class="form-label badge fs-6 <?php if($row->user_level==1){echo "bg-danger";}else{echo "bg-warning";} ?>"><?php echo $row->email; ?></p>
                     </div>
                   </div>
+                  
+                </div>
+                <div class="col-9 alert-warning">
+                    <p class="mt-4 h5"><?php echo $row->comment; ?></p>
+
                 </div>
 
-                <div class="col-md-9">
-                    <p>การออกกำลังกายช่วยธำรงสมรรถภาพทางกาย ช่วยรักษาน้ำหนักให้ถูกสุขภาพ ช่วยย่อยอาหาร ช่วยสร้างและรักษาความหนาแน่นของกระดูก ความแข็งแรงของกล้ามเนื้อ และความยืดหยุ่นได้ของข้อต่อ ลดความเสี่ยงเมื่อผ่าตัด และเสริมความแข็งแรงของระบบภูมิคุ้มกัน งานศึกษาบางงานชี้ว่า การออกกำลังกายอาจเพิ่มการคาดหมายคงชีพและคุณภาพชีวิตโดยทั่วไป[13]</p>
-                </div>
               </div>
+              <p class="text-center mt-2 h5">วันที่สร้าง : <span class="badge bg-primary"><?php echo $row->comment_datetime; ?></span></p>
+              
+
             </div>
-          </div> -->
-
-          <!-- <div class="card mt-3">
-            <div class="card-body">
-              <div class="row">
-
-                <div class="col-md-3 form-group">
-                  <div class="card text-center d-block">
-                   <img src="https://cdn.pixabay.com/photo/2014/04/03/10/32/user-310807_960_720.png" class="w-50">
-                    <div class="card-body">
-                      <label class="form-label">แอดมิน</label>
-                    </div>
-                  </div>
-                </div>
-
-                <div class="col-md-9">
-                  <form action="#">
-                    <div class="form-group">
-                      <label for="">เแสดงความคิดเห็น</label>
-                      <textarea class="form-control"></textarea>
-                    </div>
-                    <button class="btn btn-success m-4 float-end">บันทึกข้อมูล</button>
-                    </form>
-                  </div>
-                
-              </div>
-            </div>
-          </div> -->
-
+          </div>
+           <?php } ?>
 
 
       </div>

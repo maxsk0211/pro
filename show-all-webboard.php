@@ -49,7 +49,7 @@
                   while( $row = mysqli_fetch_object($result)){ 
                    ?>
                   <tr>
-                    <th class="text-center"><?php echo $i++; ?></th>
+                    <td class="text-center"><?php echo $i++; ?></td>
                     <td><?php echo $row->topic_webboard ?></td>
                     <td><?php echo $row->fname." ".$row->lname; ?></td>
                     <td><?php echo $row->view_webboard." ครั้ง"; ?></td>
