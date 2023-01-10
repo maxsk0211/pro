@@ -92,6 +92,7 @@
 
 				                <div class="mt-5 text-center">
 				                	<input type="hidden" name="id_user" value="<?php echo $_SESSION['id_user'];?>">
+				                	<input type="hidden" name="pic_db" value="<?php echo $row->pic;?>">
 				                	<button class="btn btn-primary profile-button" type="submit">Save Profile</button>
 				                </div>
 				            </div>

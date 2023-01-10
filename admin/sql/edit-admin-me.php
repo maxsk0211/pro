@@ -19,7 +19,7 @@
 	//exit();
 // chk file pic
 if ($name_file_pic==null) {
-	$name_file_pic=$_POST['pic_db'];
+	 $name_file_pic=$_POST['pic_db']; 
 }else{
 	$datetime= date("yymdhis");
 	$target_dir = "../../uploads/";

@@ -20,9 +20,54 @@
         <div class="col-md-12 col-lg-8 col-sm-10">
           <div class="alert bg-danger text-center h4 text-light rounded-pill border-4 border-light">Package - แพ็คเกจ</div>
 
-          <div class="row">
+
+
+          <div class="row bg-light">
+             <div class="form-group my-2">
+                <a href="#search-package" class="btn btn-primary btn-lg rounded-pill float-end" data-bs-toggle="modal">ค้นหา</a>
+              </div>
+              <br>
+            <?php if(isset($_SESSION['search_package'])){ ?>
+             <div class="alert alert-warning">
+               <h5 class="text-danger">คำค้นหาของคุณคือ : <?php echo $_SESSION['search_package']; ?></h5>
+               <div class="ms-auto">
+                 <a href="sql/clear-session.php?search_package=1" class="btn btn-danger">ยกการค้นหา</a>
+               </div>
+             </div>
+             <?php } ?>
+             <form action="sql/search.php" method="post" enctype="multipart/form-data">
+                <div class="modal fade" id="search-package">
+                  <div class="modal-dialog modal-dialog-centered">
+                    <div class="modal-content">
+                      <div class="modal-header bg-primary text-light">
+                        <h4 class="modal-title ">การค้นหาข่าวสาร</h4>
+                        <button class="btn-close" data-bs-dismiss="modal" type="button"></button>
+                      </div>
+                      <div class="modal-body">
+                        <div class="input-group">
+                          <input type="text" class="form-control" placeholder="ค้นหา" name="search">
+                          <input type="hidden" name="package" value="1">
+                          <button class="btn btn-primary">ค้นหา</button>
+                        </div>
+                      </div>
+                      <div class="modal-footer">
+                        <button class="btn btn-danger" data-bs-dismiss="modal" type="button">ปิด</button>
+                        
+                      </div>
+                    </div>
+                  </div>
+                </div>
+              </form>
+
+
             <?php 
-            $sql="SELECT * FROM package ORDER BY id_pa DESC";
+           if (isset($_SESSION['search_package'])) {
+                    $search_package=$_SESSION['search_package'];
+                    $sql="SELECT * FROM package,users WHERE users.id_user=package.id_user and pa_name LIKE '%$search_package%' ORDER BY package.id_pa ASC";
+                  }else{
+                    $sql = "SELECT * FROM package,users WHERE users.id_user=package.id_user  ORDER BY `package`.`id_pa` ASC";
+
+                  }
             $result=mysqli_query($conn,$sql);
             
               while($row=mysqli_fetch_object($result)){ ?>

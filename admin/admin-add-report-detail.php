@@ -148,7 +148,7 @@
                   $id_report=$_GET["id"];
                   if (isset($_SESSION['search_report_detail'])) {
                     $search_report_detail=$_SESSION['search_report_detail'];
-                    $sql="SELECT * FROM report_detail,report WHERE report.id_report = report_detail.id_report and report.id_report='$id_report' and detail_name LIKE '%$search_report_detail%' AND report_note LIKE '%$search_report_detail%'";
+                    $sql="SELECT * FROM report_detail,report WHERE report.id_report = report_detail.id_report and report.id_report='$id_report' and detail_name LIKE '%$search_report_detail%' or report_note LIKE '%$search_report_detail%'";
                   }else{
                     $sql="SELECT * FROM report_detail,report WHERE report.id_report = report_detail.id_report and report.id_report='$id_report'";
                   }

@@ -115,7 +115,6 @@ $row=mysqli_fetch_object($result);
                     <th class="text-center">#</th>
                     <th>ip</th>
                     <th>วันและเวลา</th>
-                    <th>ด้วยอุปกรณ์</th>
                   </tr>
                 </thead>
                 <tbody>
@@ -133,7 +132,6 @@ $row=mysqli_fetch_object($result);
                     <td class="text-center"><?php echo $i++; ?></td>
                     <td><?php echo $row->ip; ?></td>
                     <td><?php echo $row->detatime_log; ?></td>
-                    <td></td>
                   </tr>
                 <?php } ?>
                 </tbody>

@@ -111,7 +111,7 @@
 
 
 
-              <h4 class="bg-primary card-header mb-2 text-lightg">เรื่องสนทนาทั้งหมด</h4>
+              <h4 class="bg-primary card-header mb-2 text-light">เรื่องสนทนาทั้งหมด</h4>
               <table class="table table-hover table-info">
                 <thead>
                   <tr class="table-primary">

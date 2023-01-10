@@ -31,7 +31,7 @@
 			$_SESSION['user_lv']=$chk_login->user_level;
 			header("location: ../users/users-add-news.php");
 			exit();
-	}
+		}
 
 	}else{
 		$_SESSION['error']="E-mail หรือ รหัสผ่านไม่ถูกต้อง";
