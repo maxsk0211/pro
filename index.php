@@ -19,6 +19,9 @@
 			<!-- start Carousel -->
 				<div class="row my-5 justify-content-center ">
 					<div class="col-md-12 col-lg-8 col-sm-10">
+						
+						<div class="alert   text-center h4 text-light rounded-pill border-4 border-light" style="background-image: var(--bs-gradient);background-color: rgb(211, 84, 0);">Happy Care Nursing Home - บ้านมีสูข </div>
+
 	          <div id="carousel1" class="carousel slide" data-bs-ride="carousel">
 	            <ol class="carousel-indicators">
 	              <li data-bs-target="#carousel1" data-bs-slide-to="0" class="active"></li>
