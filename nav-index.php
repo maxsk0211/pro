@@ -63,7 +63,7 @@
 				  		<div class="col-md-6">
 
 				  			<form action="sql/chk-login.php" method="post">
-				  				<h4 class="text-center alert-success rounded-pill modal-title">เข้าสู่ระบบ</h4>
+				  				<h4 class="text-center bg-primary rounded-pill modal-title">เข้าสู่ระบบ</h4>
 					       	<div class="form-group my-2">
 					       		<label class="form-label">E-mail</label>
 					       		<input type="text" class="form-control" name="email"></input>
@@ -80,7 +80,7 @@
 
 				  		</div> 
 				  		<div class="col-md-6">
-				  				<h4 class="text-center alert-warning rounded-pill modal-title">สมัครสมาชิก</h4>
+				  				<h4 class="text-center bg-warning rounded-pill modal-title">สมัครสมาชิก</h4>
 				  					<form action="sql/insert-users.php" method="post" enctype="multipart/form-data">
                     	<div class="form-group mt-2">
                     		<label class="form-label">Name</label>
