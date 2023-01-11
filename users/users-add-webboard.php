@@ -125,7 +125,7 @@
                 </thead>
                 <tbody>
                   <?php 
-                  if (isset($_SESSION['search_webboard'])) {
+                if (isset($_SESSION['search_webboard'])) {
                   $search_webboard=$_SESSION['search_webboard'];
                   $sql="SELECT * FROM webboard,users WHERE users.id_user=webboard.id_user and topic_webboard LIKE '%$search_webboard%' ORDER BY webboard.id_webboard DESC";
                   
