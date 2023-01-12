@@ -47,7 +47,7 @@
 
 	}else{
 		// E mail ช้ำ
-		$_SESSION['error']="มีผู้ใช้ E-Mail นี้แล้ว กรุณากรอก E-Mail ใหม่";
+		$_SESSION['error']="มีผู้ใช้ E-Mail นี้แล้ว <br>กรุณากรอก E-Mail ใหม่";
 		header("location:../index.php");
 		exit(0);
 	}

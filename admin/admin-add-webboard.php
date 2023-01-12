@@ -1,9 +1,6 @@
 <?php  
       session_start(); 
-  if(!isset($_SESSION["user_lv"]) && $_SESSION['user_lv']==0 ){
-    header("location: ../index.php?");
-    exit();
-  }
+include 'chk-session.php';
   require('../dbcon.php');
 ?>
 <!doctype html>

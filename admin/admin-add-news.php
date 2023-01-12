@@ -1,18 +1,8 @@
 <?php
       session_start(); 
-      //$_SESSION["id_user"]=1;
-      //$_SESSION["user_lv"]=1;
-	if(!isset($_SESSION["user_lv"]) && $_SESSION['user_lv']==0){
-		header("location: ../index.php");
-		exit();
-	}
+include 'chk-session.php';
 
 require ('../dbcon.php');
-// $id_user=$_SESSION["id_user"];
-
-// $sql="SELECT * FROM users where id_user='$id_user'";
-// $result=mysqli_query($conn,$sql);
-// $row=mysqli_fetch_object($result);
 
 
 ?>
