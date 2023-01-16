@@ -56,26 +56,6 @@ $row=mysqli_fetch_object($result);
               <div class="alert bg-danger text-center">
                 <h4 class="alert-heading text-light">ห้องแชทเรื่อง : <?php echo $row_chat_room->chat_room_name; ?></h4>
               </div>
-
-<!--               <div class="card alert-info my-3" >
-                <div class="card-body">
-                  <div class="row d-flex flex-row-reverse">
-                    <div class="col-11 ">
-                      <span class="badge bg-danger   ">admin </span>
-                      <br>
-                      <p class="   ">12qewdferfgsejrfhglegfleh ewhrg lehrgbf elrhbg lehrbvg elhgbv ehv3</p>
-                    </div>
-                    <div class="col-1">
-                      <div class="d-flex flex-column align-items-center ">
-                        <img src="https://cdn-icons-png.flaticon.com/512/1077/1077114.png" alt="" class="w-50 ">
-                      </div>
-                    </div>
-                  </div>
-                  <div class="text-center">
-                      <span class="badge bg-info">12/12/2565</span>
-                  </div>
-                </div>
-              </div> -->
               
             <?php 
 
@@ -106,7 +86,7 @@ $row=mysqli_fetch_object($result);
                     <div class="col-11">
                       <span class="badge <?php if($id_user==$_SESSION['id_user']){echo "float-end bg-primary";}else{echo "bg-danger";} ?>"><?php echo $row_chat->fname." ".$row_chat->lname; ?></span>
                       <br>
-                      <p class="<?php if($id_user==$_SESSION['id_user']){echo "float-end";}?>"><?php echo $row_chat->chat_topic; ?></p>
+                      <p class="<?php if($id_user==$_SESSION['id_user']){echo "float-end";}?>"><?php echo $row_chat->chat_text; ?></p>
                     </div>
                     <div class="col-1">
                       <div class="d-flex flex-column align-items-center ">

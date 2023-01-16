@@ -37,7 +37,7 @@ $result = mysqli_query($conn,$sql);
 
 	if($result){
 		$_SESSION['ok']="แก้ไขข้อมูลส่วนตัวสำเร็จ";
-		header("location:../edit-admin.php");
+		header("location:../edit-user.php");
 		exit(0);
 	}else{
 		echo mysqli_error($conn);

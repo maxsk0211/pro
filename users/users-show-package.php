@@ -73,6 +73,7 @@ $row=mysqli_fetch_object($result);
                           <input type="hidden" name="package" value="1">
                           <button class="btn btn-primary">ค้นหา</button>
                         </div>
+                        <div class="form-text text-danger">คุณสามารถค้นหา : หัวข้อแพ็คเกจ ,รายละเอียดแพ็คเกจ</div>
                       </div>
                       <div class="modal-footer">
                         <button class="btn btn-danger" data-bs-dismiss="modal" type="button">ปิด</button>
@@ -89,94 +90,14 @@ $row=mysqli_fetch_object($result);
 
 
               <h4 class="bg-primary card-header mb-2 text-light">แพ็คเกจทั้งหมด</h4>
-              <!-- <table class="table table-hover table-info">
-                <thead>
-                  <tr class="table-primary">
-                    <th class="text-center">#</th>
-                    <th>หัวเรื่องโปรโมชั้น</th>
-                    <th>ราคา / บาท</th>
-                    <th>ผู้สร้าง</th>
-                    <th>ตำสั่ง</th>
-                  </tr>
-                </thead>
-                <tbody>
-                  <?php 
-                  if (isset($_SESSION['search_package'])) {
-                    $search_package=$_SESSION['search_package'];
-                    $sql="SELECT * FROM package,users WHERE users.id_user=package.id_user and pa_name LIKE '%$search_package%' ORDER BY package.id_pa ASC";
-                  }else{
-                    $sql = "SELECT * FROM package,users WHERE users.id_user=package.id_user  ORDER BY `package`.`id_pa` ASC";
-
-                  }
-                $result=mysqli_query($conn,$sql);
-                $count = mysqli_num_rows($result);
-
-                $i=1;
-
-
-                  while( $row = mysqli_fetch_object($result)){ 
-                      
-                   ?>
-                  <tr>
-                    <th class="text-center"><?php echo $i++; ?></th>
-                    <td><?php echo $row->pa_name; ?></td>
-                    <td><?php echo $row->pa_price." บาท"; ?></td>
-                    <td><?php echo $row->fname." ".$row->lname; ?></td>
-                    
-                    <td>
-                      <a href="#show_package_<?php echo $i;?>" data-bs-toggle="modal" class="btn btn-primary btn-sm">ดู</a>
-                    </td>
-                  </tr>
-                  <div class="modal fade" id="show_package_<?php echo $i;?>">
-                    <div class="modal-dialog">
-                      <div class="modal-content">
-                        <div class="modal-header bg-primary text-light">
-                          <h4 class="modal-title">แพ็คเกจ</h4>
-                          <button class="btn-close" data-bs-dismiss="modal" type="buton"></button>
-                        </div>
-                        <div class="modal-body">
-
-                          <div class="form-group ">
-                            <label for="" class="form-label">ชื่อแพ็คเกจ</label>
-                            <input class="form-control" type="text" name="pa_name" disabled value="<?php echo $row->pa_name;?>">
-                          </div>
-                          
-                          <label class="form-label">ราคา</label>
-                          <div class="input-group">
-                            <input type="number" name="pa_price" class="form-control" disabled value="<?php echo $row->pa_price;?>">
-                            <span class="input-group-text" >บาท</span>
-                          </div>
-                          
-                          <div class="form-group">
-                            <label for="" class="form-label">รายละเอียด</label>
-                            <textarea class="form-control" name="pa_detail" disabled><?php echo $row->pa_detail; ?></textarea>
-                          </div>
-                          <div class="w-100">
-                            <img src="../uploads/<?php echo $row->pa_pic;?>" class="w-100 mt-4">
-                          </div>
-
-                        </div>
-
-                        <div class="modal-footer">
-                          <a href="#" class="btn btn-danger" data-bs-dismiss="modal">ปิด</a>
-                        </div>
-                      </div>
-                    </div>
-                  </div>
-                  
-
-                <?php } ?>
-                </tbody>
-              </table> -->
-
 
          <div class="row">
             <?php 
             if (isset($_SESSION['search_package'])) {
                     $search_package=$_SESSION['search_package'];
-                    $sql="SELECT * FROM package,users WHERE users.id_user=package.id_user and pa_name LIKE '%$search_package%' or pa_detail LIKE '%$search_package%' ORDER BY package.id_pa ASC";
+                    $sql="SELECT * FROM package,users WHERE users.id_user=package.id_user and pa_name LIKE '%$search_package%' or pa_detail LIKE '%$search_package%' ORDER BY package.id_pa DESC";
                   }else{
-                    $sql = "SELECT * FROM package,users WHERE users.id_user=package.id_user  ORDER BY `package`.`id_pa` ASC";
+                    $sql = "SELECT * FROM package,users WHERE users.id_user=package.id_user  ORDER BY package.id_pa DESC";
 
                   }
             $result=mysqli_query($conn,$sql);

@@ -67,6 +67,7 @@ $row=mysqli_fetch_object($result);
                           <input type="hidden" name="package" value="1">
                           <button class="btn btn-primary">ค้นหา</button>
                         </div>
+                        <div class="form-text text-danger">คุณสามารถค้นหา : หัวข้อแพ็คเกจ ,รายละเอียดแพ็คเกจ</div>
                       </div>
                       <div class="modal-footer">
                         <button class="btn btn-danger" data-bs-dismiss="modal" type="button">ปิด</button>
@@ -138,14 +139,18 @@ $row=mysqli_fetch_object($result);
                   <?php 
                   if (isset($_SESSION['search_package'])) {
                     $search_package=$_SESSION['search_package'];
-                    $sql="SELECT * FROM package,users WHERE users.id_user=package.id_user and pa_name LIKE '%$search_package%' ORDER BY package.id_pa ASC";
+                    $sql="SELECT * FROM package,users WHERE (pa_name LIKE '%$search_package%' or pa_detail LIKE '%$search_package%') and users.id_user=package.id_user ORDER BY id_pa DESC";
                   }else{
-                    $sql = "SELECT * FROM package,users WHERE users.id_user=package.id_user  ORDER BY `package`.`id_pa` ASC";
+                    $sql = "SELECT * FROM package,users WHERE users.id_user=package.id_user  ORDER BY id_pa DESC";
 
                   }
                 $result=mysqli_query($conn,$sql);
                 $count = mysqli_num_rows($result);
-
+                if ($count==0) { ?>
+                  <tr>
+                    <td colspan="5" class="text-center table-danger">ไม่พบข้อมูล</td>
+                  </tr>
+                <?php }
                 $i=1;
 
 
@@ -153,7 +158,7 @@ $row=mysqli_fetch_object($result);
                       
                    ?>
                   <tr>
-                    <th class="text-center"><?php echo $i++; ?></th>
+                    <td class="text-center"><?php echo $i++; ?></td>
                     <td><?php echo $row->pa_name; ?></td>
                     <td><?php echo $row->pa_price." บาท"; ?></td>
                     <td><?php echo $row->fname." ".$row->lname; ?></td>
@@ -168,7 +173,7 @@ $row=mysqli_fetch_object($result);
                   <div class="modal fade" id="show-package<?php echo $i;?>">
                     <div class="modal-dialog">
                       <div class="modal-content">
-                        <div class="modal-header bg-primary">
+                        <div class="modal-header bg-primary text-light">
                           <h4 class="modal-title">เนื้อหาโปรโมชั้น</h4>
                           <button class="btn-close" data-bs-dismiss="modal" type="button"></button>
                         </div>

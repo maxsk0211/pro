@@ -1,7 +1,7 @@
 <?php
 	session_start();
 	require('../dbcon.php');
-	$email=$_POST["email"];
+	$usernames=$_POST["usernames"];
 	//$email="snookzonezaa@gmail.com";
 	$passwords=$_POST["pass1"];
 	$fname=$_POST["fname"];
@@ -12,7 +12,7 @@
 	$user_level=$_POST["user_level"];
 	$name_file_pic=$_FILES['file_pic']['name'];
 
-	$sql="SELECT * FROM users WHERE email = '$email'";
+	$sql="SELECT * FROM users WHERE usernames = '$usernames'";
 	$result=mysqli_query($conn,$sql);
 	//นับข้อมูลช้ำ
 	$count=mysqli_num_rows($result);
@@ -33,7 +33,7 @@
 
 			$name_file_pic = $datetime.basename($_FILES["file_pic"]["name"]);
 		}
-		$sql="INSERT INTO users (email, passwords, fname, lname, tel, address, pic, birthday,user_level) VALUES ('$email', '$passwords', '$fname', '$lname', '$tel', '$address', '$name_file_pic', '$birthday','$user_level')";
+		$sql="INSERT INTO users (usernames, passwords, fname, lname, tel, address, pic, birthday,user_level) VALUES ('$usernames', '$passwords', '$fname', '$lname', '$tel', '$address', '$name_file_pic', '$birthday','$user_level')";
 
 		$result=mysqli_query($conn,$sql);
 			if($result){

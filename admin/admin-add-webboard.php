@@ -59,6 +59,7 @@ include 'chk-session.php';
                           <input type="hidden" name="webboard" value="1">
                           <button class="btn btn-primary">ค้นหา</button>
                         </div>
+                        <div class="form-text text-danger">คุณสามารถค้นหา : หัวข้อกระดาษสนทนา ,รายละเอียดกระดาษสนทนา</div>
                       </div>
                       <div class="modal-footer">
                         <button class="btn btn-danger" data-bs-dismiss="modal" type="button">ปิด</button>
@@ -119,21 +120,25 @@ include 'chk-session.php';
                   <?php 
                 if (isset($_SESSION['search_webboard'])) {
                   $search_webboard=$_SESSION['search_webboard'];
-                  $sql="SELECT * FROM webboard,users WHERE users.id_user=webboard.id_user and topic_webboard LIKE '%$search_webboard%' ORDER BY webboard.id_webboard DESC";
+                  $sql="SELECT * FROM webboard,users WHERE (topic_webboard LIKE '%$search_webboard%' or detail_webboard LIKE '%$search_webboard%') and users.id_user=webboard.id_user ORDER BY webboard.id_webboard DESC";
                   
                 }else{
                   $sql = "SELECT * FROM webboard,users WHERE users.id_user=webboard.id_user ORDER BY webboard.id_webboard DESC";
                 }
                 $result=mysqli_query($conn,$sql);
-                //$count = mysqli_num_rows($result);
-
+                echo $count = mysqli_num_rows($result);
+                if ($count==0) { ?>
+                  <tr>
+                    <td colspan="6" class="text-center table-danger">ไม่พบข้อมูล</td>
+                  </tr> 
+                <?php }
                 $i=1;
 
 
                   while( $row = mysqli_fetch_object($result)){ 
                    ?>
                   <tr>
-                    <th class="text-center"><?php echo $i++; ?></th>
+                    <td class="text-center"><?php echo $i++; ?></td>
                     <td><?php echo $row->topic_webboard ?></td>
                     <td><?php echo $row->fname." ".$row->lname; ?></td>
                     <td><?php echo $row->view_webboard." ครั้ง"; ?></td>
@@ -150,7 +155,7 @@ include 'chk-session.php';
                   <div class="modal fade " id="edit-webboard<?php echo $i;?>">
                     <div class="modal-dialog">
                       <div class="modal-content">
-                        <div class="modal-header">
+                        <div class="modal-header bg-warning">
                           <h4 class="modal-title">กำลังแก้ไขกระดานสนทนา</h4>
                           <button class="btn-close" data-bs-dismiss="modal"></button>
                         </div>

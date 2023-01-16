@@ -8,6 +8,7 @@
 	$topic=$_POST["topic"];
 	$detail=$_POST["detail"];
 	//$id_user=$_POST["id_user"];
+	$news_date=date('Y-m-d H:i:s');
 
 	$datetime= date("yymdhis");
 	$target_dir = "../../uploads/";
@@ -16,7 +17,7 @@
 
 	$name_file_pic =  $datetime.basename($_FILES["file_pic"]["name"]);
 
-	$sql="INSERT INTO news (news_topic, news_topic_detail, news_pic, id_user) VALUES ('$topic','$detail','$name_file_pic','$id_user')";
+	$sql="INSERT INTO news (news_topic, news_topic_detail, news_pic, id_user,news_date) VALUES ('$topic','$detail','$name_file_pic','$id_user','$news_date')";
 	
 	$result = mysqli_query($conn,$sql);
 

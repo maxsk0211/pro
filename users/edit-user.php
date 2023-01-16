@@ -1,9 +1,7 @@
 <?php  
       session_start(); 
-	if(!isset($_SESSION["user_lv"]) && $_SESSION['user_lv']==0 ){
-		header("location: ../index.php");
-		exit();
-	}
+      include 'chk-session.php';
+//exit();
 	require('../dbcon.php');
 	$id_user=$_SESSION['id_user'];
 	$sql="SELECT * FROM users WHERE id_user = '$id_user'";
@@ -39,52 +37,52 @@
      					
      				<div class="p-3">
 				                <div class=" mb-3">
-				                    <h4 class="alert alert-danger">Profile Settings</h4>
+				                    <h4 class="alert alert-danger">แก้ไขบัญชีส่วนตัว</h4>
 				                </div>
 				                <div class="row mt-2">
 				                    <div class="col-md-6">
-				                    	<label class="form-label">Name</label>
+				                    	<label class="form-label">ชื่อ</label>
 				                    	<input type="text" class="form-control" name="fname" value="<?php echo $row->fname;?>"  require>
 				                    </div>
 				                    <div class="col-md-6">
-				                    	<label class="form-label">Surname</label>
+				                    	<label class="form-label">นรามสกุล</label>
 				                    	<input type="text" class="form-control" name="lname" value="<?php echo $row->lname;?>"   require>
 				                    </div>
 				                </div>
 				                <div class="row mt-2">
 				                    <div class="col-md-6">
-				                    	<label class="form-label">E-Mail</label>
-				                    	<input type="email" class="form-control" name="email" value="<?php echo $row->email;?>"  require>
+				                    	<label class="form-label">ชื่อบัญชี</label>
+				                    	<input type="text" class="form-control" name="usernames" value="<?php echo $row->usernames;?>"  require>
 				                    </div>
 				                    <div class="col-md-6">
-				                    	<label class="form-label">Password</label>
+				                    	<label class="form-label">รหัสผ่าน</label>
 				                    	<input type="password" class="form-control" name="password" value="<?php echo $row->passwords;?>"   require>
 				                    </div>
 				                </div>
 				                
 				                    <div class="form-group mt-2">
-				                    	<label class="form-label">Birthday</label>
+				                    	<label class="form-label">วันเกิด</label>
 				                    	<input type="date" class="form-control" name="birthday"  value="<?php echo $row->birthday; ?>"  require>
 				                    </div>
 
 				                    <div class="form-group mt-2">
-				                    	<label class="form-label">Tel</label>
+				                    	<label class="form-label">เบอร์โทร</label>
 				                    	<input type="text" class="form-control" name="tel" value="<?php echo $row->tel;?>"  require>
 				                    </div>
 
 				                    <div class="form-group mt-2">
-				                    	<label class="form-label">Address</label>
+				                    	<label class="form-label">ที่อยู่</label>
 				                    	<textarea class="form-control" name="address"  require><?php echo $row->address; ?></textarea>
 				                    </div>
 
 														<div class="form-group mt-2">
 															<label for="" class="form-label">เลือกระดับผูเใช้งาน</label>
 															<select name="users_level"disabled class="form-select">
-																<option value="<?php echo $row->user_level;?>" selected ><?php if($row->user_level==1){echo "แอดมิน";}else{echo "ผู้ใช้งานทั่วไป";}?></option>
+																<option value="<?php echo $row->user_level;?>" selected ><?php if($row->user_level==1){echo "ผู้ดูแลระบบ";}else{echo "สมาชิก";}?></option>
 															</select>
 														</div>
 
-														<div class="input-group mt-3">
+														<div class="form-group mt-3">
 															<label for="" class="input-group-text">เลือกรูปโปไฟล์</label>
 															<input type="file" class="form-control" name="file_pic">
 														</div>
@@ -92,7 +90,8 @@
 
 				                <div class="mt-5 text-center">
 				                	<input type="hidden" name="id_user" value="<?php echo $_SESSION['id_user'];?>">
-				                	<button class="btn btn-primary profile-button" type="submit">Save Profile</button>
+				                	<input type="hidden" name="pic_db" value="<?php echo $row->pic;?>">
+				                	<button class="btn btn-success" type="submit">บันทึกข้อมูล</button>
 				                </div>
 				            </div>
      				</form>

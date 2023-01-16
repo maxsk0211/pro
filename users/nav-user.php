@@ -50,7 +50,7 @@
               <img class="rounded-pill mx-auto" width="50%" src="../uploads/<?php echo $row->pic;?>">
               <br>
               <p class="form-label badge bg-success fs-5 mt-2"><?php echo $row->fname." ".$row->lname; ?></p><br>
-              <p class="form-label badge fs-6 <?php if($row->user_level==1){echo "bg-danger";}else{echo "bg-warning";} ?>"><?php echo $row->email; ?></p>
+              <p class="form-label badge fs-6 <?php if($row->user_level==1){echo "bg-danger";}else{echo "bg-warning";} ?>"><?php echo $row->usernames; ?></p>
               <div class="mt-3">
                   <a href="edit-user.php" class="btn btn-warning rounded-pill">แก้ไขข้อมูลส่วนตัว</a>
               </div>

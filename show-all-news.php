@@ -47,6 +47,7 @@
                           <input type="hidden" name="news" value="1">
                           <button class="btn btn-primary">ค้นหา</button>
                         </div>
+                        <div class="form-text text-danger">คุณสามารถค้นหา : หัวข้อข่าว ,เนื้อหาข่าว</div>
                       </div>
                       <div class="modal-footer">
                         <button class="btn btn-danger" data-bs-dismiss="modal" type="button">ปิด</button>
@@ -60,29 +61,81 @@
 
               if (isset($_SESSION['search_news'])) {
                   $search_news=$_SESSION['search_news'];
-                $sql_show_new = "SELECT * FROM news,users where users.id_user=news.id_user and news_topic LIKE '%$search_news%'";
+                $sql_show_new = "SELECT * FROM news,users where users.id_user=news.id_user and news_topic LIKE '%$search_news%' or news_topic_detail LIKE '%$search_news%'";
                   
                 }else{
                 $sql_show_new = "SELECT * FROM news,users where users.id_user=news.id_user";
 
                 }
 
-          $result_show_new=mysqli_query($conn,$sql_show_new);
-          while($row_show_new=mysqli_fetch_object($result_show_new)){ ?>
-            <div class="col-sm-4 mt-2">
-              <div class="card alert-info">
-                <img src="uploads/<?php echo $row_show_new->news_pic;?>" class="card-img-top" alt="...">
-                <div class="card-body">
-                  <h5 class="card-title"><?php echo $row_show_new->news_topic;?></h5>
-                  <p class="card-text"><?php echo $row_show_new->news_topic_detail;?></p>
-                  <a href="show-news-detail.php?id_news=<?php echo $row_show_new->id_news; ?>" class="btn btn-success float-end">ดูเพิ่มเติม</a>
-                </div>
-              </div>  
+?>
+          <div class="bg-light">
+          <nav class="">
+            <div class="nav nav-tabs" id="nav-tab" role="tablist">
+              <button class="nav-link active" id="nav-home-tab" data-bs-toggle="tab" data-bs-target="#tab1" type="button">ข่าวสารล่าสุด</button>
+              <button class="nav-link" id="nav-profile-tab" data-bs-toggle="tab" data-bs-target="#tab2" type="button">ข่าวสารยอดนิยม</button>
             </div>
+          </nav>
 
-          <?php } ?>
+          <div class="tab-content" id="pills-tabContent">
+            <!-- tab1 -->
+            <div class="tab-pane fade show active" id="tab1">
+              <div class="row my-2">
+              <?php 
+              $sql_show_new1=$sql_show_new." ORDER by id_news DESC";
+              $result_show_new=mysqli_query($conn,$sql_show_new1);
+              while($row_show_new=mysqli_fetch_object($result_show_new)){ ?>
+              <div class="col-sm-4 mt-2">
+                <div class="card alert-info">
+                  <img src="uploads/<?php echo $row_show_new->news_pic;?>" class="card-img-top" alt="...">
+                  <div class="card-body">
+                    <h5 class="card-title"><?php echo $row_show_new->news_topic;?></h5>
+                    <p class="card-text"><?php echo $row_show_new->news_topic_detail;?></p>
 
-                          
+                      
+                    <a href="show-news-detail.php?id_news=<?php echo $row_show_new->id_news; ?>" class="btn btn-success float-end">ดูเพิ่มเติม</a>
+                    เยี่ยมชม <span class="badge bg-danger"><?php echo $row_show_new->news_view;?></span> ครั้ง
+                    <br>
+                    <span class="badge bg-danger"><?php echo $row_show_new->news_date;?></span> 
+                  </div>
+                </div>  
+              </div>
+
+            <?php } ?>
+            </div>
+            </div>
+            <!-- end tap1 -->
+            <!-- tab2 -->
+            <div class="tab-pane fade" id="tab2">
+              <div class="row my-2">
+              <?php 
+              $sql_show_new2=$sql_show_new." ORDER BY news_view DESC";
+              $result_show_new=mysqli_query($conn,$sql_show_new2);
+              while($row_show_new=mysqli_fetch_object($result_show_new)){ ?>
+              <div class="col-sm-4 mt-2">
+                <div class="card alert-info">
+                  <img src="uploads/<?php echo $row_show_new->news_pic;?>" class="card-img-top" alt="...">
+                  <div class="card-body">
+                    <h5 class="card-title"><?php echo $row_show_new->news_topic;?></h5>
+                    <p class="card-text"><?php echo $row_show_new->news_topic_detail;?></p>
+                    <a href="show-news-detail.php?id_news=<?php echo $row_show_new->id_news; ?>" class="btn btn-success float-end">ดูเพิ่มเติม</a>
+                    เยี่ยมชม <span class="badge bg-danger"><?php echo $row_show_new->news_view;?></span> ครั้ง
+                    <br>
+                    <span class="badge bg-danger"><?php echo $row_show_new->news_date;?></span> 
+
+                  </div>
+                </div>  
+              </div>
+
+            <?php } ?>
+            </div>
+            </div>
+            <!-- end tab2 -->
+          </div>
+        </div>    
+                
+
+
         </div>
           <!-- row -->
         </div>

@@ -35,6 +35,7 @@
 <!-- start Carousel Pr -->
   <div class="row my-5 justify-content-center ">
     <div class="col-md-12 col-lg-8 col-sm-10">
+      <a href="show-all-news.php" class="btn btn-warning my-2"><--- Back</a>
 
       <div class="alert bg-primary text-center h4 text-light rounded-pill border-4 border-light">News - ข่าวสาร</div>
 
@@ -75,7 +76,7 @@
                    <img src="uploads/<?php echo $row->pic;?>" class="w-100 p-3 rounded-pill">
                     <div class="card-body">
                       <p class="form-label badge bg-success fs-6"><?php echo $row->fname." ".$row->lname; ?></p><br>
-                      <p class="form-label badge fs-6 <?php if($row->user_level==1){echo "bg-danger";}else{echo "bg-warning";} ?>"><?php echo $row->email; ?></p>
+                      <p class="form-label badge fs-6 <?php if($row->user_level==1){echo "bg-danger";}else{echo "bg-warning";} ?>"><?php echo $row->usernames; ?></p>
                     </div>
                   </div>
                   

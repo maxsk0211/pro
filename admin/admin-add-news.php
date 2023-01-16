@@ -65,6 +65,7 @@ require ('../dbcon.php');
                           <input type="hidden" name="news" value="1">
                           <button class="btn btn-primary">ค้นหา</button>
                         </div>
+                        <div class="form-text text-danger">คุณสามารถค้นหา : หัวข้อข่าว ,เนื้อหาข่าว</div>
                       </div>
                       <div class="modal-footer">
                         <button class="btn btn-danger" data-bs-dismiss="modal" type="button">ปิด</button>
@@ -125,10 +126,10 @@ require ('../dbcon.php');
 
                 if (isset($_SESSION['search_news'])) {
                   $search_news=$_SESSION['search_news'];
-                $sql = "SELECT * FROM news,users where users.id_user=news.id_user and news_topic LIKE '%$search_news%'";
+                $sql = "SELECT * FROM news,users where  (news_topic LIKE '%$search_news%' or news_topic_detail LIKE '%$search_news%') and users.id_user=news.id_user ORDER by id_news DESC";
                   
                 }else{
-                $sql = "SELECT * FROM news,users where users.id_user=news.id_user";
+                $sql = "SELECT * FROM news,users where users.id_user=news.id_user ORDER by id_news DESC";
 
                 }
 

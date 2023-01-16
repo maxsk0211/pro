@@ -17,6 +17,11 @@
 		unset($_SESSION['search_package']);
 		header("location: ../users-show-package.php");
 
+	}elseif(isset($_GET['search_chat_room']) && ($_GET['search_chat_room']==1)){
+		unset($_SESSION['search_chat_room']);
+		unset($_SESSION['type_name']);
+		header("location: ../users-add-chat-room.php");
+
 	}
 	
 	

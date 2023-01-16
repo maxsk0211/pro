@@ -63,13 +63,13 @@
 				  		<div class="col-md-6">
 
 				  			<form action="sql/chk-login.php" method="post">
-				  				<h4 class="text-center bg-primary rounded-pill modal-title">เข้าสู่ระบบ</h4>
+				  				<h4 class="text-center text-light bg-primary rounded-pill modal-title">เข้าสู่ระบบ</h4>
 					       	<div class="form-group my-2">
-					       		<label class="form-label">E-mail</label>
-					       		<input type="text" class="form-control" name="email"></input>
+					       		<label class="form-label">ชื่อผู้ใช้ หรือ เบอร์โทร</label>
+					       		<input type="text" class="form-control" name="usernames"></input>
 					       	</div>
 					       	<div class="form-group my-2">
-					       		<label class="form-label">Password</label>
+					       		<label class="form-label">รหัสผ่าน</label>
 					       		<input type="password" class="form-control" name="passwords"></input>
 					       	</div>
 					       	<div class="d-grid gap-2 mt-3">
@@ -83,27 +83,27 @@
 				  				<h4 class="text-center bg-warning rounded-pill modal-title">สมัครสมาชิก</h4>
 				  					<form action="sql/insert-users.php" method="post" enctype="multipart/form-data">
                     	<div class="form-group mt-2">
-                    		<label class="form-label">Name</label>
+                    		<label class="form-label">ชื่อ</label>
                     		<input type="text" class="form-control" name="fname" required>
                     	</div>
 
                     	<div class="form-group mt-2">
-                    		<label class="form-label">Surname</label>
+                    		<label class="form-label">นามสกุล</label>
                     		<input type="text" class="form-control" name="lname" required > 
                     	</div>
                                     
 		                	<div class="form-group mt-2">
-	                    	<label class="form-label">E-Mail</label>
-	                    	<input type="email" class="form-control" name="email" required>	
+	                    	<label class="form-label">ชื่อผู้ใช้งาน</label>
+	                    	<input type="text" class="form-control" name="usernames" required>	
 		                	</div>
 		                   
 		                   <div class="row mt-2">
 		                   		<div class="col-md-6">
-		                   			<label class="form-label">Password</label>
+		                   			<label class="form-label">รหัสผ่าน</label>
 		                    		<input type="password" class="form-control" name="pass1" required onkeyup="chk_pass()">
 		                   		</div>
 		                   		<div class="col-md-6">
-		                   			<label class="form-label">confirm Password</label>
+		                   			<label class="form-label">ยืนยันรหัสผ่าน</label>
 		                    		<input type="password" class="form-control" name="pass2" required onkeyup="chk_pass()">
 		                   		</div>
 		                   		<span id="message"></span>
@@ -118,7 +118,7 @@
 									    const pass2 = document.querySelector('input[name=pass2]');
 									    if (pass1.value===pass2.value) {
 									        document.getElementById('message').style.color = 'green';
-									        document.getElementById('message').innerHTML = 'รหัสผ่านเหมือนกัน';
+									        document.getElementById('message').innerHTML = 'รหัสผ่านตรงกัน';
 									        document.getElementById("register").disabled = false;
 									    }else{
 									        document.getElementById('message').style.color = 'red';
@@ -127,26 +127,25 @@
 									    }
 									  }
 
-
 									</script>
 									
                     <div class="form-group mt-2">
-                    	<label class="form-label">Birthday</label>
+                    	<label class="form-label">วันเกิด</label>
                     	<input type="date" class="form-control" name="birthday" required>
                     </div>
 
                     <div class="form-group mt-2">
-                    	<label class="form-label">Tel</label>
-                    	<input type="text" class="form-control" name="tel" maxlength="10" required>
+                    	<label class="form-label">เบอร์โทร</label>
+                    	<input type="number" class="form-control" name="tel" maxlength="10" required>
                     </div>
 
                     <div class="form-group mt-2">
-                    	<label class="form-label">Address</label>
+                    	<label class="form-label">ที่อยู่</label>
                     	<textarea class="form-control" name="address" required></textarea>
                     </div>
 
-										<div class="input-group mt-3">
-											<label for="" class="input-group-text">เลือกรูปโปไฟล์</label>
+										<div class="form-group mt-3">
+											<label for="" class="form-label">เลือกรูปโปไฟล์</label>
 											<input type="file" class="form-control" name="file_pic" required>
 										</div>
 										<div class="d-grid gap-2 mt-3">

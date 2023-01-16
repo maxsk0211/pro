@@ -63,6 +63,7 @@ require('../dbcon.php');
                           <input type="hidden" name="report" value="1">
                           <button class="btn btn-primary">ค้นหา</button>
                         </div>
+                        <div class="form-text text-danger">คุณสามารถค้นหา : ชื่อแบบสอบถาม</div>
                       </div>
                       <div class="modal-footer">
                         <button class="btn btn-danger" data-bs-dismiss="modal" type="button">ปิด</button>
@@ -121,7 +122,7 @@ require('../dbcon.php');
                   <?php 
                   if(isset($_SESSION['search_report'])){
                     $search_report=$_SESSION['search_report'];
-                    $sql="SELECT * FROM report,users WHERE report.id_user=users.id_user and report_topic LIKE '%$search_report%' or `report_detail` LIKE '%$search_report%'  ORDER BY report.id_report DESC";
+                    $sql="SELECT * FROM report,users WHERE  report_topic LIKE '%$search_report%'  and report.id_user=users.id_user  ORDER BY report.id_report DESC";
 
                   }else{
 

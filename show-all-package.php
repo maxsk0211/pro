@@ -49,6 +49,7 @@
                           <input type="hidden" name="package" value="1">
                           <button class="btn btn-primary">ค้นหา</button>
                         </div>
+                        <div class="form-text text-danger">คุณสามารถค้นหา : หัวข้อแพ็คเกจ ,รายละเอียดแพ็คเกจ</div>
                       </div>
                       <div class="modal-footer">
                         <button class="btn btn-danger" data-bs-dismiss="modal" type="button">ปิด</button>
@@ -61,14 +62,20 @@
 
 
             <?php 
-           if (isset($_SESSION['search_package'])) {
+                  if (isset($_SESSION['search_package'])) {
                     $search_package=$_SESSION['search_package'];
-                    $sql="SELECT * FROM package,users WHERE users.id_user=package.id_user and pa_name LIKE '%$search_package%' ORDER BY package.id_pa ASC";
+                    $sql="SELECT * FROM package,users WHERE (pa_name LIKE '%$search_package%' or pa_detail LIKE '%$search_package%') and users.id_user=package.id_user ORDER BY id_pa DESC";
                   }else{
-                    $sql = "SELECT * FROM package,users WHERE users.id_user=package.id_user  ORDER BY `package`.`id_pa` ASC";
+                    $sql = "SELECT * FROM package,users WHERE users.id_user=package.id_user  ORDER BY id_pa DESC";
 
                   }
             $result=mysqli_query($conn,$sql);
+            $count=mysqli_num_rows($result);
+            if ($count==0) { ?>
+            <div class="alert alert-danger">
+              <h4 class="text-center">ไม่พบข้อมูล</h4>
+            </div>
+            <?php }
             
               while($row=mysqli_fetch_object($result)){ ?>
                 <div class="col-md-4 bg-light p-3">

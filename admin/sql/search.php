@@ -31,10 +31,10 @@
 		$id_report=$_POST['id_report'];
 		header("location: ../admin-add-report-detail.php?id=$id_report");
 
-	}elseif (isset($_POST['search-contact-user']) && ($_POST['search-contact-user']==1)) {
-		$search_contact_user=$_POST['search'];
-		$_SESSION['search_contact_user']=$search_contact_user;
-		header("location: ../admin-contact.php");
+	}elseif (isset($_POST['search_chat_room']) && ($_POST['search_chat_room']==1)) {
+		$_SESSION['type_name']=$_POST['type_name'];
+		$_SESSION['search_chat_room']=$_POST['search'];
+		header("location: ../admin-add-chat-room.php");
 	}
 
  ?>

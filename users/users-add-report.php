@@ -11,7 +11,7 @@ require('../dbcon.php');
   <head>
     <meta charset="utf-8">
     <meta name="viewport" content="width=device-width, initial-scale=1">
-    <title>Bootstrap demo</title>
+    <title>จัดการแบบสอบถาม</title>
       <link href="../css/bootstrap.min.css" rel="stylesheet"> 
       <script src="../js/bootstrap.js"></script> 
 
@@ -85,7 +85,7 @@ require('../dbcon.php');
       <div class="modal-dialog">
         <div class="modal-content">
           
-            <div class="modal-header">
+            <div class="modal-header bg-primary text-light">
               <h4 class="modal-title">กำลังทำแบบประเมิน</h4>
               <button class="btn-close" data-bs-dismiss="modal" type="button"></button>
             </div>
@@ -101,12 +101,12 @@ require('../dbcon.php');
                 $count=1; 
 
                   while ($row_show_detail=mysqli_fetch_object($result_show_detail)){
-                  
+                  $report_score=$row_show_detail->report_score
                 ?>
                 <label class="form-label"><?php echo $count." : ".$row_show_detail->detail_name; ?></label>
                 <select class="form-select" name="score[]">
-                  <?php for ( $ii=0 ; $ii <= $row_show_detail->report_score ; $ii++) {?>
-                  <option value="<?php echo $ii; ?>"><?php echo $ii; ?></option>
+                  <?php for ( $ii=$report_score ; $ii >= 0 ; $ii--) {?>
+                  <option value="<?php echo $ii; ?>"><?php echo $ii; ?> คะแนน</option>
                   <?php } ?>
                 </select>
 

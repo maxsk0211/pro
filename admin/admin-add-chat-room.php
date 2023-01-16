@@ -41,13 +41,20 @@ $row=mysqli_fetch_object($result);
 
           <div class="card border-primary">
             <div class="card-body">
+              
               <div class="form-group mb-5">
                 <a href="#search-chat-room" class="btn btn-primary btn-lg rounded-pill float-end" data-bs-toggle="modal">ค้นหา</a>
               </div>
+              <div class="form-group mb-2">
+                <a href="admin-add-chat-room-type.php" class="btn btn-warning btn-lg rounded-pill float-end">จัดการประเภทห้องสนทนา</a>
+              </div>
               <br>
-            <?php if(isset($_SESSION['search_chat_room'])){ ?>
+              <br>
+              <br>
+              <?php if(isset($_SESSION['search_chat_room'])){ ?>
              <div class="alert alert-warning">
                <h5 class="text-danger">คำค้นหาของคุณคือ : <?php echo $_SESSION['search_chat_room']; ?></h5>
+               <h5 class="text-success">ประเภทคือ : <?php if($_SESSION['type_name']==""){ echo "ทุกประเภท";}else{ echo $_SESSION['type_name']; }  ?></h5>
                <div class="ms-auto">
                  <a href="sql/clear-session.php?search_chat_room=1" class="btn btn-danger">ยกการค้นหา</a>
                </div>
@@ -63,13 +70,32 @@ $row=mysqli_fetch_object($result);
                         <button class="btn-close" data-bs-dismiss="modal" type="button"></button>
                       </div>
                       <div class="modal-body">
-                        <div class="input-group">
+                        <div class="form-group">
+                          <label class="form-label">คำค้นหา</label>
                           <input type="text" class="form-control" placeholder="ค้นหา" name="search">
                           <input type="hidden" name="search_chat_room" value="1">
-                          <button class="btn btn-primary">ค้นหา</button>
                         </div>
+                        <div class="form-text text-danger">คุณสามารถค้นหา : ชื่อห้องแชท</div>
+                        <hr>
+                        <div class="form-group">
+                          <label class="form-label">เลือกประเภท</label>
+                          <select name="type_name" class="form-control">
+                            <option value="" selected>ทุกประเภท</option>
+                            <?php 
+                            $sql="SELECT * FROM chat_room_type";
+                            $result=mysqli_query($conn,$sql);
+                            while($row=mysqli_fetch_object($result)){
+                             ?>
+                            <option value="<?php echo $row->type_name; ?>"><?php echo $row->type_name; ?></option>
+
+
+                            <?php } ?>
+                          </select>
+                        </div>
+                        <div class="form-text text-danger">คุณสามารถเลือกประเภทได้</div>
                       </div>
                       <div class="modal-footer">
+                        <button class="btn btn-primary" type="submit">ค้นหา</button>
                         <button class="btn btn-danger" data-bs-dismiss="modal" type="button">ปิด</button>
                       </div>
                     </div>
@@ -87,25 +113,32 @@ $row=mysqli_fetch_object($result);
                   <tr class="table-primary">
                     <th class="text-center">#</th>
                     <th>ชื่อห้องแชท</th>
+                    <th>ประเถท</th>
                     <th>คำสั่ง</th>
                     <th>สถานะ</th>
                   </tr>
                 </thead>
                 <tbody>
                   <?php 
-                  $id_user=$_SESSION['id_user'];
+                  
+
                   if (isset($_SESSION['search_chat_room'])) {
                     $search_chat_room=$_SESSION['search_chat_room'];
-                    $sql="SELECT * FROM chat_room WHERE chat_room_name LIKE '%$search_chat_room%'  ORDER BY id_chat_room DESC";
+                    $type_name=$_SESSION['type_name'];
+                    $sql="SELECT * FROM chat_room,chat_room_type WHERE chat_room.id_chat_room_type=chat_room_type.id_chat_room_type and chat_room_name LIKE '%$search_chat_room%' and chat_room_type.type_name LIKE '%$type_name%'  ORDER BY chat_room.id_chat_room DESC";
                   }else{
-                    $sql = "SELECT * FROM chat_room  ORDER BY id_chat_room DESC";
+                    $sql = "SELECT * FROM chat_room,chat_room_type where chat_room.id_chat_room_type=chat_room_type.id_chat_room_type   ORDER BY chat_room.id_chat_room DESC";
 
                   }
                 $result=mysqli_query($conn,$sql);
                 $count = mysqli_num_rows($result);
 
                 $i=1;
-
+                if ($count==0) { ?>
+                  <tr class="table-danger text-center">
+                    <td colspan="5">ไม่พบข้อมูล</td>
+                  </tr>
+               <?php }
 
                   while( $row = mysqli_fetch_object($result)){ 
                       
@@ -113,10 +146,10 @@ $row=mysqli_fetch_object($result);
                   <tr>
                     <td class="text-center"><?php echo $i++; ?></td>
                     <td><?php echo $row->chat_room_name; ?></td>
-
+                    <td><?php echo $row->type_name; ?></td>
                     <td>
                       <a href="admin-chat-room.php?id_chat_room=<?php echo $row->id_chat_room;?>" class="btn btn-primary btn-sm">ห้องแชท</a>
-                      <a href="#" class="btn btn-danger btn-sm">ลบ</a>
+                      <a href="sql/del-chat-detail.php?id_chat_room=<?php echo $row->id_chat_room;?>" class="btn btn-danger btn-sm" onclick="return confirm('ยืนยันการลบข้อมูล ?');">ลบ</a>
                     </td>
                     <td>
                       <?php if($row->char_room_status==1){ ?>

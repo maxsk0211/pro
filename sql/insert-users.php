@@ -1,7 +1,7 @@
 <?php
 	session_start();
 	require('../dbcon.php');
-	$email=$_POST["email"];
+	$usernames=$_POST["usernames"];
 	//$email="snookzonezaa@gmail.com";
 	$passwords=$_POST["pass1"];
 	$fname=$_POST["fname"];
@@ -11,7 +11,7 @@
 	$birthday=$_POST["birthday"];
 	$name_file_pic=$_FILES['file_pic']['name'];
 
-	$sql="SELECT * FROM users WHERE email = '$email'";
+	$sql="SELECT * FROM users WHERE usernames = '$usernames' or tel = '$tel'";
 	$result=mysqli_query($conn,$sql);
 	//นับข้อมูลช้ำ
 	$count=mysqli_num_rows($result);
@@ -32,12 +32,19 @@
 
 			$name_file_pic = $datetime.basename($_FILES["file_pic"]["name"]);
 		}
-		$sql="INSERT INTO users (email, passwords, fname, lname, tel, address, pic, birthday) VALUES ('$email', '$passwords', '$fname', '$lname', '$tel', '$address', '$name_file_pic', '$birthday')";
+		$sql="INSERT INTO users (usernames, passwords, fname, lname, tel, address, pic, birthday) VALUES ('$usernames', '$passwords', '$fname', '$lname', '$tel', '$address', '$name_file_pic', '$birthday')";
 
 		$result=mysqli_query($conn,$sql);
 			if($result){
-				$_SESSION['ok']="สมัครสมาชิก";
-				header("location:../index.php");
+				// ตึงข้อมูล
+				$sql="SELECT * FROM users WHERE usernames = '$usernames'";
+				$result=mysqli_query($conn,$sql);
+				$row=mysqli_fetch_object($result);
+				$_SESSION['id_user']=$row->id_user;
+				// end
+				$_SESSION['user_lv']=$row->user_level;
+				$_SESSION['ok']="ยินดีต้อนรับ คุณ".$row->fname." ".$row->lname;
+				header("location: ../users/users-add-news.php");
 				exit(0);
 
 			}else{
@@ -47,7 +54,7 @@
 
 	}else{
 		// E mail ช้ำ
-		$_SESSION['error']="มีผู้ใช้ E-Mail นี้แล้ว <br>กรุณากรอก E-Mail ใหม่";
+		$_SESSION['error_login']="มีชื่อผู้ใช้หรือเบอร์โทรนี้แล้ว<br>กรุณาสมัครข้อมูลใหม่";
 		header("location:../index.php");
 		exit(0);
 	}

@@ -36,41 +36,41 @@ include 'chk-session.php';
      					
      				<div class="p-3">
 				                <div class=" mb-3">
-				                    <h4 class="alert alert-danger">Profile Settings</h4>
+				                    <h4 class="alert alert-danger">แกัไขบัญชีส่วนตัว</h4>
 				                </div>
 				                <div class="row mt-2">
 				                    <div class="col-md-6">
-				                    	<label class="form-label">Name</label>
+				                    	<label class="form-label">ชื่อ</label>
 				                    	<input type="text" class="form-control" name="fname" value="<?php echo $row->fname;?>"  require>
 				                    </div>
 				                    <div class="col-md-6">
-				                    	<label class="form-label">Surname</label>
+				                    	<label class="form-label">นามสกุล</label>
 				                    	<input type="text" class="form-control" name="lname" value="<?php echo $row->lname;?>"   require>
 				                    </div>
 				                </div>
 				                <div class="row mt-2">
 				                    <div class="col-md-6">
-				                    	<label class="form-label">E-Mail</label>
-				                    	<input type="email" class="form-control" name="email" value="<?php echo $row->email;?>"  require>
+				                    	<label class="form-label">ชื่อบัญชี</label>
+				                    	<input type="text" class="form-control" name="usernames" value="<?php echo $row->usernames;?>"  require>
 				                    </div>
 				                    <div class="col-md-6">
-				                    	<label class="form-label">Password</label>
+				                    	<label class="form-label">รหัสผ่าน</label>
 				                    	<input type="password" class="form-control" name="password" value="<?php echo $row->passwords;?>"   require>
 				                    </div>
 				                </div>
 				                
 				                    <div class="form-group mt-2">
-				                    	<label class="form-label">Birthday</label>
+				                    	<label class="form-label">วันเกิด</label>
 				                    	<input type="date" class="form-control" name="birthday"  value="<?php echo $row->birthday; ?>"  require>
 				                    </div>
 
 				                    <div class="form-group mt-2">
-				                    	<label class="form-label">Tel</label>
+				                    	<label class="form-label">เบอร์โทร</label>
 				                    	<input type="text" class="form-control" name="tel" maxlength="2"  value="<?php echo $row->tel;?>"  require>
 				                    </div>
 
 				                    <div class="form-group mt-2">
-				                    	<label class="form-label">Address</label>
+				                    	<label class="form-label">ที่อยู่</label>
 				                    	<textarea class="form-control" name="address"  require><?php echo $row->address; ?></textarea>
 				                    </div>
 
@@ -81,7 +81,7 @@ include 'chk-session.php';
 															</select>
 														</div>
 
-														<div class="input-group mt-3">
+														<div class="form-group mt-3">
 															<label for="" class="input-group-text">เลือกรูปโปไฟล์</label>
 															<input type="file" class="form-control" name="file_pic">
 														</div>
@@ -90,7 +90,7 @@ include 'chk-session.php';
 				                <div class="mt-5 text-center">
 				                	<input type="hidden" name="id_user" value="<?php echo $_SESSION['id_user'];?>">
 				                	<input type="hidden" name="pic_db" value="<?php echo $row->pic;?>">
-				                	<button class="btn btn-primary profile-button" type="submit">Save Profile</button>
+				                	<button class="btn btn-success" type="submit">บันทึกข้อมูล</button>
 				                </div>
 				            </div>
      				</form>

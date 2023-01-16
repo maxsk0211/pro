@@ -83,7 +83,7 @@ require ('../dbcon.php');
                    <img src="../uploads/<?php echo $row->pic;?>" class="w-100 p-3 rounded-pill">
                     <div class="card-body">
                       <p class="form-label badge bg-success fs-6"><?php echo $row->fname." ".$row->lname; ?></p><br>
-                      <p class="form-label badge fs-6 <?php if($row->user_level==1){echo "bg-danger";}else{echo "bg-warning";} ?>"><?php echo $row->email; ?></p>
+                      <p class="form-label badge fs-6 <?php if($row->user_level==1){echo "bg-danger";}else{echo "bg-warning";} ?>"><?php echo $row->usernames; ?></p>
                     </div>
                   </div>
                   
@@ -122,7 +122,7 @@ require ('../dbcon.php');
                    <img src="../uploads/<?php echo $row->pic; ?>" class="w-100 p-3">
                     <div class="card-body">
                       <p class="form-label badge bg-success fs-6"><?php echo $row->fname." ".$row->lname; ?></p><br>
-                      <p class="form-label badge fs-6 <?php if($row->user_level==1){echo "bg-danger";}else{echo "bg-warning";} ?>"><?php echo $row->email; ?></p>
+                      <p class="form-label badge fs-6 <?php if($row->user_level==1){echo "bg-danger";}else{echo "bg-warning";} ?>"><?php echo $row->usernames; ?></p>
                     </div>
                   </div>
                   

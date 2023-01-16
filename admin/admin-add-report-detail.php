@@ -79,6 +79,7 @@ include 'chk-session.php';
                           <input type="hidden" name="id_report" value="<?php echo $_GET['id']?>">
                           <button class="btn btn-primary">ค้นหา</button>
                         </div>
+                        <div class="form-text text-danger">คุณสามารถค้นหา : รายละเอียดย่อย ,หมายเหตุ</div>
                       </div>
                       <div class="modal-footer">
                         <button class="btn btn-danger" data-bs-dismiss="modal" type="button">ปิด</button>
@@ -145,7 +146,7 @@ include 'chk-session.php';
                   $id_report=$_GET["id"];
                   if (isset($_SESSION['search_report_detail'])) {
                     $search_report_detail=$_SESSION['search_report_detail'];
-                    $sql="SELECT * FROM report_detail,report WHERE report.id_report = report_detail.id_report and report.id_report='$id_report' and detail_name LIKE '%$search_report_detail%' or report_note LIKE '%$search_report_detail%'";
+                    $sql="SELECT * FROM report_detail,report WHERE report.id_report = report_detail.id_report and report.id_report='$id_report' and (detail_name LIKE '%$search_report_detail%' or report_note LIKE '%$search_report_detail%')";
                   }else{
                     $sql="SELECT * FROM report_detail,report WHERE report.id_report = report_detail.id_report and report.id_report='$id_report'";
                   }

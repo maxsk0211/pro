@@ -26,12 +26,8 @@
      <?php include 'nav-index-all.php'; ?> 
 		  <div class="row my-5 justify-content-center">
 		  	<div class="col-md-12 col-lg-8 col-sm-10">
-     			 <div class="card border-primary border-3 rounded-pill my-2">
-            <div class="card-body">
-
-              <h3 class="card-header bg-secondary text-center text-white rounded-pill">รายงานแบบสอบถาม</h3>
-            </div>
-          </div>
+		  		<a href="show-all-report.php" class="btn btn-warning my-2"><-- Back</a>
+					<div class="alert bg-secondary rounded-pill border-4 border-light h4 text-center text-light">รายงานแบบสอบถาม</div>
 
 				<div class="card">
 					<div class="card-body">
@@ -72,6 +68,7 @@
 										    report_detail.id_report_detail
 										    ";
 								$result=mysqli_query($conn,$sql);
+								$i=0;
 								while($row=mysqli_fetch_object($result)){
 									$count_score=$row->count_score;
 									$report_score=$row->report_score;
@@ -95,7 +92,52 @@
 								  <div class="progress-bar text-dark <?php echo $bg; ?>" role="progressbar" style="width: <?php echo $percentage;?>%; h" aria-valuenow="<?php echo $percentage;?>" aria-valuemin="0" aria-valuemax="100"><p class="h4 "><?php echo number_format((float)$percentage, 2, '.', '');?>%</p></div>
 								  <div class="progress-bar bg-secondary" role="progressbar" style="width: <?php echo $balance;?>%; h" aria-valuenow="<?php echo $balance;?>" aria-valuemin="0" aria-valuemax="100"></div>
 								</div>
+								
+								  <a href="#show_detail_score_<?php echo $i;?>"  data-bs-toggle="modal" class="float-end">รายละเอียด</a>
+									<br>
+									<!-- modal detail report -->
+									<div class="modal fade" id="show_detail_score_<?php echo $i++;?>">
+										<div class="modal-dialog modal-dialog-centered">
+											<div class="modal-content">
+												<div class="modal-header bg-primary text-light">
+													<h4 class="modal-title">รายละเอียดคะแนน</h4>
+													<button class="btn-close" type="button" data-bs-dismiss="modal"></button>
+												</div>
+												<div class="modal-body">
+													<div class="alert alert-success">
+												 		<h4 class="">หัวข้อย่อย : <?php echo $row->detail_name; ?></h4>
+													</div>
+													<h4>คะแนนเต็มในหัวข้อนี้คือ :  <?php echo $report_score; ?> คะแนน</h4>
+													<hr>
+													<?php 
+													
+													$id_report_detail=$row->id_report_detail;
+													$sql_detail_score="SELECT use_score_report, COUNT(id_score_report) as count_score FROM score_report WHERE id_report_detail = '$id_report_detail'  GROUP BY use_score_report ORDER BY `score_report`.`use_score_report` DESC";
+													$result_detail_score=mysqli_query($conn,$sql_detail_score);
+													$count=mysqli_num_rows($result_detail_score);
+													$sum_use_score_report=0;
 
+													if ($count!=0) {
+															while($row_detail_score=mysqli_fetch_object($result_detail_score)){ ?>
+																<h5>ประเมิน <?php echo $row_detail_score->use_score_report ?> คะแนน จำนวน <?php echo $row_detail_score->count_score ?> คน</h5>
+																
+														<?php	}	?>
+														<hr>
+														<h5>รวมคะแนนเต็ม <?php echo $total; ?> คะแนน </h5>
+														<h5>รวมคะแนนที่ได้ <?php echo $sum_score; ?> คะแนน คิดเป็นร้อนละ <?php echo number_format((float)$percentage, 2, '.', ''); ?> %</h5>
+													<?php }else{
+
+													}
+													 ?>
+													
+												</div>
+												<div class="modal-footer">
+													<a href="#" class="btn btn-danger"  type="button" data-bs-dismiss="modal">ปิด</a>
+												</div> 
+											</div>
+										</div>
+									</div>
+									<!-- end modal detail report -->
 							</div>
 						<?php } ?>
 

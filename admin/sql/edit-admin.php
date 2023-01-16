@@ -2,7 +2,7 @@
 	session_start();
 	require('../../dbcon.php');
 
-	$email=$_POST["email"];
+	$usernames=$_POST["usernames"];
 	$password=$_POST["password"];
 	$fname=$_POST["fname"];
 	$lname=$_POST["lname"];
@@ -24,7 +24,7 @@ if ($name_file_pic==null) {
 	$name_file_pic = $datetime.basename($_FILES["file_pic"]["name"]);
 }
 
-	echo $sql="UPDATE users SET email = '$email', passwords = '$password', fname = '$fname', lname = '$lname', tel = '$tel', address = '$address', pic = '$name_file_pic', birthday = '$birthday', user_level = '$user_level' WHERE users.id_user = '$id_user'";
+	echo $sql="UPDATE users SET usernames = '$usernames', passwords = '$password', fname = '$fname', lname = '$lname', tel = '$tel', address = '$address', pic = '$name_file_pic', birthday = '$birthday', user_level = '$user_level' WHERE users.id_user = '$id_user'";
 	//exit();
 
 

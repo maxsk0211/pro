@@ -26,9 +26,10 @@
 		$id_report=$_GET['id_report'];
 		header("location: ../admin-add-report-detail.php?id=$id_report");
 
-	}elseif(isset($_GET['search_contact_user']) && ($_GET['search_contact_user']==1)){
-		unset($_SESSION['search_contact_user']);
-		header("location: ../admin-contact.php");
+	}elseif(isset($_GET['search_chat_room']) && ($_GET['search_chat_room']==1)){
+		unset($_SESSION['search_chat_room']);
+		unset($_SESSION['type_name']);
+		header("location: ../admin-add-chat-room.php");
 
 	}
 	

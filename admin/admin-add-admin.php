@@ -60,6 +60,7 @@
                           <input type="hidden" name="admin" value="1">
                           <button class="btn btn-primary">ค้นหา</button>
                         </div>
+                        <div class="form-text text-danger">คุณสามารถค้นหา : ชื่อ ,นามสกุล ,ชื่อผู้ใช้งาน ,วันเกิด(DD/MM/YYYY) <br> ,เบอร์โทร ,ที่อยู่</div>
                       </div>
                       <div class="modal-footer">
                         <button class="btn btn-danger" data-bs-dismiss="modal" type="button">ปิด</button>
@@ -80,43 +81,43 @@
                       <div class="modal-body">
 
                       <div class="form-group mt-2">
-                        <label class="form-label">Name</label>
+                        <label class="form-label">ชื่อ</label>
                         <input type="text" class="form-control" name="fname" required>
                       </div>
 
                       <div class="form-group mt-2">
-                        <label class="form-label">Surname</label>
+                        <label class="form-label">นามสกุล</label>
                         <input type="text" class="form-control" name="lname" required > 
                       </div>
                                     
                       <div class="form-group mt-2">
-                        <label class="form-label">E-Mail</label>
-                        <input type="email" class="form-control" name="email" required> 
+                        <label class="form-label">ชื่อผู้ใช้งาน</label>
+                        <input type="email" class="form-control" name="usernames" required> 
                       </div>
                        
                        <div class="row mt-2">
                           <div class="col-md-6">
-                            <label class="form-label">Password</label>
+                            <label class="form-label">รหัสผ่าน</label>
                             <input type="password" class="form-control" name="pass1" required onkeyup="chk_pass()">
                           </div>
                           <div class="col-md-6">
-                            <label class="form-label">confirm Password</label>
+                            <label class="form-label">ยืนยันรหัสผ่าน</label>
                             <input type="password" class="form-control" name="pass2" required onkeyup="chk_pass()">
                           </div>
                           <span id="message"></span>
                        </div>
                     <div class="form-group mt-2">
-                      <label class="form-label">Birthday</label>
+                      <label class="form-label">วันเกิด</label>
                       <input type="date" class="form-control" name="birthday" required>
                     </div>
 
                     <div class="form-group mt-2">
-                      <label class="form-label">Tel</label>
+                      <label class="form-label">เบอร์โทร</label>
                       <input type="text" class="form-control" name="tel" maxlength="10" required>
                     </div>
 
                     <div class="form-group mt-2">
-                      <label class="form-label">Address</label>
+                      <label class="form-label">ที่อยู่</label>
                       <textarea class="form-control" name="address" required></textarea>
                     </div>
 
@@ -124,19 +125,20 @@
                       <label for="" class="badge bg-danger fs-6 my-1">เลือกระดับผู้ใช้งาน</label>
                         <select class="form-select" name="user_level" required>
                           <option disabled selected>เลือกระดับผู้ใช้งาน</option>
-                          <option value="1" class="alert-danger">แอดมิน</option>
-                          <option value="0" class="alert-warning">ผู้ใช้งานทั่วไป</option>
+                          <option value="1" class="alert-danger">ผู้ดูแลระบบ</option>
+                          <option value="0" class="alert-warning">สมาชิก</option>
                         </select>
                     </div>
 
-                    <div class="input-group mt-3">
-                      <label for="" class="input-group-text">เลือกรูปโปไฟล์</label>
-                      <input type="file" class="form-control" name="file_pic" required>
-                    </div>
+
+                      <div class="form-group mt-3">
+                        <label for="" class="form-label">เลือกรูปโปไฟล์</label>
+                        <input type="file" class="form-control" name="file_pic" required>
+                      </div>
                     
                       </div>
                       <div class="modal-footer">
-                        <button type="submit" class="btn btn-warning" id="register" disabled>สมัครสมาชิก</button>
+                        <button type="submit" class="btn btn-warning" id="register" disabled>บันทึกข้อมูล</button>
                         <button class="btn btn-danger" data-bs-dismiss="modal" type="button">ปิด</button>
                       </div>
                     </div>
@@ -150,7 +152,7 @@
                 <thead>
                   <tr class="table-primary">
                     <th class="text-center">#</th>
-                    <th>E-Mail</th>
+                    <th>ชื่อบัญชีผู้ใช้</th>
                     <th>ชื่อ-นามสกุล</th>
                     <th>เบอร์โทร</th>
                     <th class="text-center">ระดับผู้ใช้งาน</th>
@@ -164,10 +166,10 @@
           if(isset($_SESSION['search_admin'])){
             $search_admin=$_SESSION['search_admin'];
 
-            $sql="SELECT * FROM users WHERE id_user != 1 and email LIKE '%$search_admin%' or passwords LIKE '%$search_admin%' or fname LIKE '%$search_admin%' or lname LIKE '%$search_admin%' or tel LIKE '%$search_admin%' or address LIKE '%$search_admin%'"; 
+            $sql="SELECT * FROM users WHERE id_user != 1 and (usernames LIKE '%$search_admin%'  or fname LIKE '%$search_admin%' or lname LIKE '%$search_admin%' or tel LIKE '%$search_admin%' or address LIKE '%$search_admin%' or birthday LIKE '%$search_admin%') order by id_user DESC"; 
 
           }else{
-            $sql="SELECT * FROM users where id_user !=1";
+            $sql="SELECT * FROM users where id_user !=1 order by id_user DESC";
           }
 
           $result = mysqli_query($conn,$sql);
@@ -183,12 +185,12 @@
           ?>
           <tr>
             <td class="text-center"><?php echo $i++; ?></td>
-            <td><?php echo $row->email; ?></td>
+            <td><?php echo $row->usernames; ?></td>
             <td><?php echo $row->fname." ".$row->lname; ?></td>
             <td><?php echo $row->tel; ?></td>
             <td class="text-center">
               <span class="badge   <?php if($row->user_level==1){ echo "bg-danger"; }else{ echo "bg-warning"; } ?>">
-              <?php if($row->user_level==1){ echo "แอดมิน"; }else{ echo "ผู้ใช้งานทั่วไป"; } ?></span>
+              <?php if($row->user_level==1){ echo "ผู้ดูแลระบบ"; }else{ echo "สมาชิก"; } ?></span>
             </td>
             <td>
               <a href="#show-user<?php echo $i;?>" data-bs-toggle="modal" class="btn btn-primary btn-sm">ดู</a>
@@ -206,38 +208,38 @@
                         <div class="modal-body">
 
                       <div class="form-group">
-                        <label class="form-label">Name</label>
+                        <label class="form-label">ชื่อ</label>
                         <input type="text" class="form-control" readonly value="<?php echo $row->fname;?>"> 
                       </div>
 
                       <div class="form-group mt-2">
-                        <label class="form-label">Surname</label>
+                        <label class="form-label">นามสกุล</label>
                         <input type="text" class="form-control" readonly value="<?php echo $row->lname;?>"> 
                       </div>
                                     
                       <div class="form-group mt-2">
-                        <label class="form-label">E-Mail</label>
-                        <input type="email" class="form-control" readonly value="<?php echo $row->email;?>"> 
+                        <label class="form-label">ชื่อผู้ใช้งาน</label>
+                        <input type="text" class="form-control" readonly value="<?php echo $row->usernames;?>"> 
                       </div>            
                 
                     <div class="form-group mt-2">
-                      <label class="form-label">Birthday</label>
+                      <label class="form-label">วันเกิด</label>
                       <input type="date" class="form-control" readonly value="<?php echo $row->birthday?>">
                     </div>
 
                     <div class="form-group mt-2">
-                      <label class="form-label">Tel</label>
+                      <label class="form-label">เบอร์โทร</label>
                       <input type="text" class="form-control" readonly value="<?php echo $row->tel;?>">
                     </div>
 
                     <div class="form-group mt-2">
-                      <label class="form-label">Address</label>
+                      <label class="form-label">ที่อยู่</label>
                       <textarea class="form-control" readonly><?php echo $row->address; ?></textarea>
                     </div>
                     <div class="form-group">
                       <label for="" class="badge bg-danger fs-6 my-1">เลือกระดับผู้ใช้งาน</label>
                         <select class="form-select" disabled>
-                          <option><?php if($row->user_level==1){echo "แอดมิน";}else{ echo"ผู้ใช้งานทั่วไป";} ?></option>
+                          <option><?php if($row->user_level==1){echo "ผู้ดูแลระบบ";}else{ echo"สมาชิก";} ?></option>
                         </select>
                     </div>
                     <img src="../uploads/<?php echo $row->pic;?>" class="w-100 mt-4">
@@ -261,49 +263,49 @@
                         </div>
                         <div class="modal-body">
                       <div class="form-group">
-                        <label class="form-label">Name</label>
+                        <label class="form-label">ชื่อ</label>
                         <input type="text" class="form-control" required value="<?php echo $row->fname;?>" name="fname"> 
                       </div>
 
                       <div class="form-group mt-2">
-                        <label class="form-label">Surname</label>
+                        <label class="form-label">นามสกุล</label>
                         <input type="text" class="form-control" required value="<?php echo $row->lname;?>" name="lname"> 
                       </div>
                                     
                       <div class="form-group mt-2">
-                        <label class="form-label">E-Mail</label>
-                        <input type="email" class="form-control" required value="<?php echo $row->email;?>" name="email"> 
+                        <label class="form-label">ชื่อผู้ใช้งาน</label>
+                        <input type="text" class="form-control" required value="<?php echo $row->usernames;?>" name="usernames"> 
                       </div>
                       <div class="from-group mt-2">
-                        <label class="form-label">Password</label>
+                        <label class="form-label">รหัสผ่าน</label>
                         <input type="password" name="password" class="form-control" required value="<?php echo $row->passwords;?>">           
                       </div>         
                 
                     <div class="form-group mt-2">
-                      <label class="form-label">Birthday</label>
+                      <label class="form-label">วันเกิด</label>
                       <input type="date" class="form-control" required value="<?php echo $row->birthday?>" name="birthday">
                     </div>
 
                     <div class="form-group mt-2">
-                      <label class="form-label">Tel</label>
+                      <label class="form-label">เบอร์โทร</label>
                       <input type="text" class="form-control" required value="<?php echo $row->tel;?>" name="tel">
                     </div>
 
                     <div class="form-group mt-2">
-                      <label class="form-label">Address</label>
+                      <label class="form-label">ที่อยู่</label>
                       <textarea class="form-control" required name="address"><?php echo $row->address; ?></textarea>
                     </div>
 
                     <div class="form-group">
                       <label for="" class="badge bg-danger fs-6 my-1">เลือกระดับผู้ใช้งาน</label>
                         <select class="form-select" name="user_level">
-                          <option value="1" <?php if($row->user_level==1){echo "selected";} ?> class="alert-danger">แอดมิน</option>
-                          <option value="0" <?php if($row->user_level==0){echo "selected";} ?> class="alert-warning">ผู้ใช้งานทั่วไป</option>
+                          <option value="1" <?php if($row->user_level==1){echo "selected";} ?> class="alert-danger">ผู้ดูแลระบบ</option>
+                          <option value="0" <?php if($row->user_level==0){echo "selected";} ?> class="alert-warning">สมาชิก</option>
                         </select>
                     </div>
-                    <div class="input-group mt-3">
-                      <label for="" class="input-group-text">เลือกรูปโปไฟล์</label>
-                      <input type="file" class="form-control" name="users_file_pic">
+                    <div class="form-group mt-3">
+                      <label for="" class="form-label">เลือกรูปโปไฟล์</label>
+                      <input type="file" class="form-control" name="file_pic">
                     </div>
                     <img src="../uploads/<?php echo $row->pic;?>" class="w-100 mt-4">
                         </div>

@@ -10,7 +10,7 @@
 
 	$sql="INSERT INTO report_detail (id_report, detail_name, report_score, report_note, id_user) VALUES ('$id_report','$report_name','$report_score','$report_note','$id_user')";
 	$result=mysqli_query($conn,$sql);
-	$url="../admin-report-detail.php?id=".$id_report;
+	$url="../admin-add-report-detail.php?id=".$id_report;
 	if($result){
 		$_SESSION['ok']="เพิ่มหัวข้อย่อยสำเร็จ";
 		header("location: $url");

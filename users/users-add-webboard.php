@@ -63,6 +63,7 @@
                           <input type="hidden" name="webboard" value="1">
                           <button class="btn btn-primary">ค้นหา</button>
                         </div>
+                        <div class="form-text text-danger">คุณสามารถค้นหา : หัวข้อกระดาษสนทนา ,รายละเอียดกระดาษสนทนา</div>
                       </div>
                       <div class="modal-footer">
                         <button class="btn btn-danger" data-bs-dismiss="modal" type="button">ปิด</button>
@@ -127,11 +128,11 @@
                   <?php 
                 if (isset($_SESSION['search_webboard'])) {
                   $search_webboard=$_SESSION['search_webboard'];
-                  $sql="SELECT * FROM webboard,users WHERE users.id_user=webboard.id_user and topic_webboard LIKE '%$search_webboard%' ORDER BY webboard.id_webboard DESC";
+                  $sql="SELECT * FROM webboard,users WHERE (topic_webboard LIKE '%$search_webboard%' or detail_webboard LIKE '%$search_webboard%') and users.id_user=webboard.id_user ORDER BY webboard.id_webboard DESC";
                   
                 }else{
                   $sql = "SELECT * FROM webboard,users WHERE users.id_user=webboard.id_user ORDER BY webboard.id_webboard DESC";
-                }                
+                }         
                 $result=mysqli_query($conn,$sql);
                 $count = mysqli_num_rows($result);
                 if($count == 0) { ?>

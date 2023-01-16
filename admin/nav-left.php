@@ -7,7 +7,7 @@
         	<img class="rounded-pill mt-5" width="80%" src="../uploads/<?php echo $row->pic;?>">
 
 	          <p class="form-label badge bg-success fs-5 font-weight-bold mt-3"><?php echo $row->fname." ".$row->lname; ?></p>
-	          <p class="form-label badge fs-6 mt-2 <?php if($row->user_level==1){echo "bg-danger";}else{echo "bg-warning";} ?>"><?php echo $row->email; ?></p>
+	          <p class="form-label badge fs-6 mt-2 <?php if($row->user_level==1){echo "bg-danger";}else{echo "bg-warning";} ?>"><?php echo $row->usernames; ?></p>
 
         	<div class="mt-5">
             	<a href="edit-admin.php" class="btn btn-warning rounded-pill">แก้ไขข้อมูลส่วนตัว</a>
