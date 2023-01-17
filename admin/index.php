@@ -115,7 +115,7 @@ $row=mysqli_fetch_object($result);
                 <tbody>
                   <?php 
                   $id_user=$_SESSION['id_user'];
-                  $sql="SELECT * FROM log_login WHERE id_user = '$id_user' ORDER BY detatime_log DESC";
+                  $sql="SELECT * FROM log_login WHERE id_user = '$id_user' ORDER BY detatime_log DESC limit 20";
                   $result=mysqli_query($conn,$sql);
                   
                   $i=1;

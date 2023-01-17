@@ -71,7 +71,6 @@
 				</div>
 
 
-
 												  
 				<a href="show-all-news.php" class="btn btn-primary d-grid gap-2 mt-2">ดูทั้งหมด</a>
         </div>
