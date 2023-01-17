@@ -10,6 +10,8 @@
 		$_SESSION['ok']="เพิ่มหัวข้อแบบสอบถามสำเร็จ";
 		header("location: ../admin-add-report.php");
 		exit();
+	}else{
+		echo mysqli_error($conn);
 	}
 
 

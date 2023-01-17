@@ -95,7 +95,7 @@ $row=mysqli_fetch_object($result);
             <?php 
             if (isset($_SESSION['search_package'])) {
                     $search_package=$_SESSION['search_package'];
-                    $sql="SELECT * FROM package,users WHERE users.id_user=package.id_user and pa_name LIKE '%$search_package%' or pa_detail LIKE '%$search_package%' ORDER BY package.id_pa DESC";
+                    $sql="SELECT * FROM package,users WHERE users.id_user=package.id_user and (pa_name LIKE '%$search_package%' or pa_detail LIKE '%$search_package%') ORDER BY package.id_pa DESC";
                   }else{
                     $sql = "SELECT * FROM package,users WHERE users.id_user=package.id_user  ORDER BY package.id_pa DESC";
 

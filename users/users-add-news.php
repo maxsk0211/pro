@@ -105,7 +105,7 @@ require ('../dbcon.php');
               <?php 
               if (isset($_SESSION['search_news'])) {
                   $search_news=$_SESSION['search_news'];
-                $sql_show_new = "SELECT * FROM news,users where  news_topic LIKE '%$search_news%' or news_topic_detail LIKE '%$search_news%' and users.id_user=news.id_user ORDER by id_news DESC";
+                $sql_show_new = "SELECT * FROM news,users where (news_topic LIKE '%$search_news%' or news_topic_detail LIKE '%$search_news%') and users.id_user=news.id_user ORDER by id_news DESC";
                   
                 }else{
                 $sql_show_new = "SELECT * FROM news,users where users.id_user=news.id_user ORDER by id_news DESC";

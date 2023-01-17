@@ -1,6 +1,6 @@
 <?php
 	session_start();
-	require('../dbcon.php');
+	require('../../dbcon.php');
 	$usernames=$_POST["usernames"];
 	//$email="snookzonezaa@gmail.com";
 	$passwords=$_POST["pass1"];

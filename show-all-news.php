@@ -61,7 +61,7 @@
 
               if (isset($_SESSION['search_news'])) {
                   $search_news=$_SESSION['search_news'];
-                $sql_show_new = "SELECT * FROM news,users where users.id_user=news.id_user and news_topic LIKE '%$search_news%' or news_topic_detail LIKE '%$search_news%'";
+                $sql_show_new = "SELECT * FROM news,users where users.id_user=news.id_user and (news_topic LIKE '%$search_news%' or news_topic_detail LIKE '%$search_news%')";
                   
                 }else{
                 $sql_show_new = "SELECT * FROM news,users where users.id_user=news.id_user";

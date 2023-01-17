@@ -36,7 +36,7 @@ require('../dbcon.php');
 
               <div class="form-group mb-5">
                 <a href="#search-report" class="btn btn-primary btn-lg rounded-pill float-end" data-bs-toggle="modal">ค้นหา</a>
-                <a href="#add-report" class="btn btn-success btn-lg rounded-pill mb-3 float-start" data-bs-toggle="modal">สร้างข่าวสาร</a>
+                <a href="#add-report" class="btn btn-success btn-lg rounded-pill mb-3 float-start" data-bs-toggle="modal">สร้างแบบสอบถาม</a>
               </div>
               <br>
 
@@ -54,7 +54,7 @@ require('../dbcon.php');
                   <div class="modal-dialog modal-dialog-centered">
                     <div class="modal-content">
                       <div class="modal-header bg-primary text-light">
-                        <h4 class="modal-title ">การค้นหาข่าวสาร</h4>
+                        <h4 class="modal-title ">การค้นหาแบบสอบถาม</h4>
                         <button class="btn-close" data-bs-dismiss="modal" type="button"></button>
                       </div>
                       <div class="modal-body">
@@ -79,7 +79,7 @@ require('../dbcon.php');
                   <div class="modal-dialog modal-dialog-centered ">
                     <div class="modal-content">
                       <div class="modal-header bg-success text-light">
-                        <h4 class="modal-title">สร้างข่าวสาร</h4>
+                        <h4 class="modal-title">สร้างแบบสอบถาม</h4>
                         <button class="btn-close" data-bs-dismiss="modal" type="button"></button>
                       </div>
                       <div class="modal-body">

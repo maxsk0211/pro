@@ -113,7 +113,7 @@ $row=mysqli_fetch_object($result);
                     </div>
                     <div class="col-10">
                       <form action="sql/insert-chat-detail.php" method="post" enctype="multipart/form-data">                      
-                          <textarea class="form-control" name="chat_topic" <?php if($row_chat_room->char_room_status==0){ echo "disabled";}?>></textarea>
+                          <textarea class="form-control" name="chat_text" <?php if($row_chat_room->char_room_status==0){ echo "disabled";}?>></textarea>
                           <input type="hidden" name="id_user" value="<?php echo $_SESSION['id_user'];?>">
                           <input type="hidden" name="id_chat_room" value="<?php echo $_GET['id_chat_room'];?>">
                           <button class="btn btn-success float-end mt-3" <?php if($row_chat_room->char_room_status==0){ echo "disabled";}?>>ส่ง</button>

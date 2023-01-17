@@ -92,7 +92,7 @@
                                     
                       <div class="form-group mt-2">
                         <label class="form-label">ชื่อผู้ใช้งาน</label>
-                        <input type="email" class="form-control" name="usernames" required> 
+                        <input type="text" class="form-control" name="usernames" required> 
                       </div>
                        
                        <div class="row mt-2">
@@ -113,7 +113,7 @@
 
                     <div class="form-group mt-2">
                       <label class="form-label">เบอร์โทร</label>
-                      <input type="text" class="form-control" name="tel" maxlength="10" required>
+                      <input type="number" class="form-control" name="tel" maxlength="10" required>
                     </div>
 
                     <div class="form-group mt-2">
