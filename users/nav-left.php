@@ -1,7 +1,7 @@
 <div class="card text-light d-none d-lg-block" style="background-color: rgb(36, 113, 163);" >
 	<div class="card-body">
 		<h4 class="card-header text-center">ระดับผู้ใช้งาน :  
-			<p class="badge bg-warning">ผู้ใช้งานทั่วไป</p>
+			<p class="badge bg-warning">สมาชิก</p>
 		</h4>
 	    <div class="d-flex flex-column align-items-center text-center">
         	<img class="rounded-pill mt-5" width="80%" src="../uploads/<?php echo $row->pic;?>">
