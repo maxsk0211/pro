@@ -138,7 +138,7 @@
                     
                       </div>
                       <div class="modal-footer">
-                        <button type="submit" class="btn btn-warning" id="register" disabled>บันทึกข้อมูล</button>
+                        <button type="submit" class="btn btn-success" id="register" disabled>บันทึกข้อมูล</button>
                         <button class="btn btn-danger" data-bs-dismiss="modal" type="button">ปิด</button>
                       </div>
                     </div>

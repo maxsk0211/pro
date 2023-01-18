@@ -21,7 +21,7 @@
 	<script src="js/bootstrap.js"></script> 
 
   </head>
-  <body style="height: 5000px; padding-top: 70px;background: rgb(100, 40, 140);">
+  <body style=" padding-top: 70px;background: rgb(100, 40, 140);">
 	  <div class="container-fluid">
      <?php include 'nav-index-all.php'; ?> 
 		  <div class="row my-5 justify-content-center">
