@@ -78,7 +78,7 @@
 														<div class="form-group mt-2">
 															<label for="" class="form-label">เลือกระดับผูเใช้งาน</label>
 															<select name="users_level"disabled class="form-select">
-																<option value="<?php echo $row->user_level;?>" selected ><?php if($row->user_level==1){echo "ผู้ดูแลระบบ";}else{echo "สมาชิก";}?></option>
+																<option value="" selected>สมาชิก</option>
 															</select>
 														</div>
 

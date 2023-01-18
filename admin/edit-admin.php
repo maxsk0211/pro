@@ -76,13 +76,13 @@ include 'chk-session.php';
 
 														<div class="form-group mt-2">
 															<label for="" class="form-label">เลือกระดับผูเใช้งาน</label>
-															<select name="users_level"disabled class="form-select">
-																<option value="<?php echo $row->user_level;?>" selected ><?php if($row->user_level==1){echo "แอดมิน";}else{echo "ผู้ใช้งานทั่วไป";}?></option>
+															<select name=""disabled class="form-select">
+																<option value="" selected >ผู้ดูแลระบบ</option>
 															</select>
 														</div>
 
 														<div class="form-group mt-3">
-															<label for="" class="input-group-text">เลือกรูปโปไฟล์</label>
+															<label for="" class="form-label">เลือกรูปโปไฟล์</label>
 															<input type="file" class="form-control" name="file_pic">
 														</div>
 
