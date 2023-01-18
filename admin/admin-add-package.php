@@ -21,7 +21,7 @@ $row=mysqli_fetch_object($result);
       <script src="../js/bootstrap.js"></script> 
 
   </head>
-  <body style="height: 5000px; padding-top: 70px;background: rgb(100, 40, 140);">
+  <body style=" padding-top: 70px;background: rgb(100, 40, 140);">
 
     <div class="container-fluid">
      

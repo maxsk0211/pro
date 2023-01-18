@@ -23,7 +23,7 @@
 
 		</style>
   </head>
-  <body style="height:3000px;padding-top: 70px;background: rgb(100, 40, 120);">
+  <body style="padding-top: 70px;background: rgb(100, 40, 120);">
 	  <div class="container-fluid">
      <?php include 'nav-user.php'; ?> 
      <div class="row justify-content-center">

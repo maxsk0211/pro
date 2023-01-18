@@ -1,9 +1,6 @@
 <?php  
   session_start(); 
-  if(!isset($_SESSION["user_lv"]) || $_SESSION['user_lv']==1 ){
-    header("location: ../index.php");
-    exit();
-  }
+      include 'chk-session.php';
 
   require('../dbcon.php');
 ?>
@@ -17,7 +14,7 @@
       <script src="../js/bootstrap.js"></script> 
 
   </head>
-  <body style="height: 5000px; padding-top: 70px;background: rgb(100, 40, 140);">
+  <body style=" padding-top: 70px;background: rgb(100, 40, 140);">
 
     <div class="container-fluid">
       <?php include 'nav-user.php' ?>
