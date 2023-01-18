@@ -51,5 +51,3 @@
 					
 				</div>
 				<!-- End webboard -->
-
-        <div class="btn btn-success"></div>

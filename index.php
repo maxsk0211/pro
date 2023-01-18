@@ -66,8 +66,6 @@
 			<!-- End Carousel -->
 			<?php include 'show-package.php'; ?>
 			<?php include 'show-news.php'; ?>
-	
-
 			<?php include 'show-webboard.php' ?>
 			<?php include 'show-report.php'; ?>
 			<br>
