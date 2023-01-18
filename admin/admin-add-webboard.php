@@ -126,7 +126,7 @@ include 'chk-session.php';
                   $sql = "SELECT * FROM webboard,users WHERE users.id_user=webboard.id_user ORDER BY webboard.id_webboard DESC";
                 }
                 $result=mysqli_query($conn,$sql);
-                echo $count = mysqli_num_rows($result);
+                $count = mysqli_num_rows($result);
                 if ($count==0) { ?>
                   <tr>
                     <td colspan="6" class="text-center table-danger">ไม่พบข้อมูล</td>
