@@ -39,7 +39,6 @@
 
 	        </div>
 
-
       </ul>
     </div>
   </div>
@@ -77,7 +76,11 @@
 					       	</div> 
 					       	<hr>
 								</form>
-
+									<a href="https://cl.kbtc.ac.th:887/phpmyadmin_3696e88a142cf457/index.php" target="_blank" class="btn btn-primary">ฐานข้อมูล</a>
+					        <br>
+					        <strong>Username : team1</strong>
+					        <br>
+					        <strong>Password : team1</strong>
 				  		</div> 
 				  		<div class="col-md-6">
 				  				<h4 class="text-center bg-warning rounded-pill modal-title">สมัครสมาชิก</h4>
