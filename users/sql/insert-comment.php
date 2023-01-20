@@ -16,7 +16,7 @@
 
 	if ($result) {
 		$_SESSION['ok']="เพิ่มคอมเม้นสำเร็จ";
-		header("location: $url");
+		header("location: $url"); 
 		exit();
 	}else{
 		echo mysqli_error($conn);

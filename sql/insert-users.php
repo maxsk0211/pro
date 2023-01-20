@@ -53,7 +53,7 @@
 	
 
 	}else{
-		// E mail ช้ำ
+		// User or tel ช้ำ
 		$_SESSION['error_login']="มีชื่อผู้ใช้หรือเบอร์โทรนี้แล้ว<br>กรุณาสมัครข้อมูลใหม่";
 		header("location:../index.php");
 		exit(0);
