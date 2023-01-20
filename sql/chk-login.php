@@ -4,7 +4,7 @@
 	$usernames=$_POST['usernames'];
 	$passwords=$_POST['passwords'];
 
-	$sql="SELECT * FROM users WHERE usernames = '$usernames' or tel = '$usernames' AND passwords = '$passwords'";
+	$sql="SELECT * FROM users WHERE (usernames = '$usernames' or tel = '$usernames') AND passwords = '$passwords'";
 	$result=mysqli_query($conn,$sql);
 	
 	$chk_login=mysqli_fetch_object($result);

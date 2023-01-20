@@ -65,11 +65,11 @@
 				  				<h4 class="text-center text-light bg-primary rounded-pill modal-title">เข้าสู่ระบบ</h4>
 					       	<div class="form-group my-2">
 					       		<label class="form-label">ชื่อผู้ใช้ หรือ เบอร์โทร</label>
-					       		<input type="text" class="form-control" name="usernames"></input>
+					       		<input type="text" class="form-control" name="usernames" required></input>
 					       	</div>
 					       	<div class="form-group my-2">
 					       		<label class="form-label">รหัสผ่าน</label>
-					       		<input type="password" class="form-control" name="passwords"></input>
+					       		<input type="password" class="form-control" name="passwords" required></input>
 					       	</div>
 					       	<div class="d-grid gap-2 mt-3">
 					       		<button type="submit" class="btn btn-success">เข้าสูระบบ</button>
