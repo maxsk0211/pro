@@ -16,7 +16,7 @@
 					<div class="tab-content" id="pills-tabContent">
 					  <!-- tab1 -->
 					  <div class="tab-pane fade show active alert-danger" id="tab1">
-					  	<div class="row my-2  p-4">
+					  	<div class="row my-2  p-3">
 					  	<?php 
 							$sql_show_new="SELECT * FROM news ORDER by id_news DESC LIMIT 6";
 							$result_show_new=mysqli_query($conn,$sql_show_new);
@@ -43,7 +43,7 @@
 					  <!-- end tap1 -->
 					  <!-- tab2 -->
 					  <div class="tab-pane fade alert-warning" id="tab2">
-					  	<div class="row my-2  p-4">
+					  	<div class="row my-2  p-3">
 					  	<?php 
 							$sql_show_new="SELECT * FROM news ORDER BY news_view DESC LIMIT 6";
 							$result_show_new=mysqli_query($conn,$sql_show_new);

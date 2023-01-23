@@ -79,8 +79,8 @@
 
           <div class="tab-content" id="pills-tabContent">
             <!-- tab1 -->
-            <div class="tab-pane fade show active" id="tab1">
-              <div class="row my-2">
+            <div class="tab-pane fade show active alert-danger" id="tab1">
+              <div class="row my-2 p-2">
               <?php 
               $sql_show_new1=$sql_show_new." ORDER by id_news DESC";
               $result_show_new=mysqli_query($conn,$sql_show_new1);
@@ -106,8 +106,8 @@
             </div>
             <!-- end tap1 -->
             <!-- tab2 -->
-            <div class="tab-pane fade" id="tab2">
-              <div class="row my-2">
+            <div class="tab-pane fade alert-warning" id="tab2">
+              <div class="row my-2 p-3">
               <?php 
               $sql_show_new2=$sql_show_new." ORDER BY news_view DESC";
               $result_show_new=mysqli_query($conn,$sql_show_new2);
