@@ -156,7 +156,7 @@
 						<div class="alert alert-primary m-5 text-center h5">
 							จำนวนผู้ประเมิน
 								<div class="badge bg-danger">
-									<?php echo $count_score; ?>
+									<?php if(isset($count_score)){echo $count_score;}else{ echo "0";} ?>
 								</div>ครั้ง
 							<br>
 							จำนวนผู้เข้าชม : 

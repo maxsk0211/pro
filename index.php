@@ -12,7 +12,7 @@
        <link href="css/bootstrap.min.css" rel="stylesheet"> 
 	    <script src="js/bootstrap.js"></script> 
 </head>
-  <body style=" padding-top: 50px;background: rgb(100, 40, 140);">
+  <body style="padding-top: 50px;background: rgb(100, 40, 140);">
   	<!-- main container -->
   <div class="container-fluid">
 		  <?php include 'nav-index.php'; ?>

@@ -89,22 +89,22 @@ $row=mysqli_fetch_object($result);
 
                         <div class="form-group ">
                           <label for="" class="form-label">ชื่อแพ็คเกจ</label>
-                          <input class="form-control" type="text" name="pa_name"></input>
+                          <input class="form-control" type="text" name="pa_name" required></input>
                         </div>
                         
                         <label class="form-label">ราคา</label>
                         <div class="input-group">
-                          <input type="number" name="pa_price" class="form-control">
+                          <input type="number" name="pa_price" class="form-control" required>
                           <span class="input-group-text">บาท</span>
                         </div>
                         
                         <div class="form-group">
                           <label for="" class="form-label">รายละเอียด</label>
-                          <textarea class="form-control" name="pa_detail"></textarea>
+                          <textarea class="form-control" name="pa_detail" required></textarea>
                         </div>
                         <div class="input-group me-3">
                           <label for="" class="input-group-text">เลือกรูปปก</label>
-                          <input type="file" name="pa_pic" class="form-control">
+                          <input type="file" name="pa_pic" class="form-control" required>
                         </div>
                         <br>
                       </div>
@@ -224,12 +224,12 @@ $row=mysqli_fetch_object($result);
                           
                         <div class="form-group ">
                           <label for="" class="form-label">ชื่อแพ็คเกจ</label>
-                          <input class="form-control" type="text" name="pa_name" value="<?php echo $row->pa_name;?>">
+                          <input class="form-control" type="text" name="pa_name" value="<?php echo $row->pa_name;?>" require>
                         </div>
                         
                         <label class="form-label">ราคา</label>
                         <div class="input-group">
-                          <input type="number" name="pa_price" class="form-control" value="<?php echo $row->pa_price;?>">
+                          <input type="number" name="pa_price" class="form-control" value="<?php echo $row->pa_price;?>" require>
                           <span class="input-group-text">บาท</span>
                         </div>
                         
