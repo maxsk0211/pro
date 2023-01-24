@@ -57,7 +57,7 @@ $row=mysqli_fetch_object($result);
                       <div class="modal-body">
                         <div class="form-group m-3">
                           <label for="" class="form-label">ชื่อประเภท</label>
-                          <input class="form-control" type="text" name="type_name"></input>
+                          <input class="form-control" type="text" name="type_name" required></input>
                         </div>
               
                       </div>

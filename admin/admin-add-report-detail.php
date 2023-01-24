@@ -103,16 +103,16 @@ include 'chk-session.php';
               
                 <div class="form-group m-3">
                   <label for="" class="form-label">รายละเอียดย่อย</label>
-                  <input class="form-control" type="text" name="detail_name">
+                  <input class="form-control" type="text" name="detail_name" required>
                 </div>
         
                 <div class="form-group m-3">
                   <label for="" class="form-label">กำหนดคะแนนเต็ม (เลขจำนวนเต็ม)</label>
-                  <input type="number" name="detail_score" class="form-control">
+                  <input type="number" name="detail_score" class="form-control" required>
                 </div>
                 <div class="form-group m-3">
                   <label for="" class="form-label">หมายเหตุ</label>
-                  <textarea class="form-control" name="report_note"></textarea>
+                  <textarea class="form-control" name="report_note" required></textarea>
                 </div>
                 <br>
                 <input type="hidden" name="id_report" value="<?php echo $_GET["id"]; ?>">

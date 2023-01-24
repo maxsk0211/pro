@@ -124,9 +124,8 @@
                     <div class="form-group mt-2">
                       <label for="" class="badge bg-danger fs-6 my-1">เลือกระดับผู้ใช้งาน</label>
                         <select class="form-select" name="user_level" required>
-                          <option disabled selected>เลือกระดับผู้ใช้งาน</option>
+                          <option value="0" class="alert-warning">สมาชิก</option> 
                           <option value="1" class="alert-danger">ผู้ดูแลระบบ</option>
-                          <option value="0" class="alert-warning">สมาชิก</option>
                         </select>
                     </div>
 
@@ -288,7 +287,7 @@
 
                     <div class="form-group mt-2">
                       <label class="form-label">เบอร์โทร</label>
-                      <input type="text" class="form-control" required value="<?php echo $row->tel;?>" name="tel">
+                      <input type="number" class="form-control" required value="<?php echo $row->tel;?>" name="tel">
                     </div>
 
                     <div class="form-group mt-2">

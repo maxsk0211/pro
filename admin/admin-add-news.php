@@ -87,16 +87,16 @@ require ('../dbcon.php');
                       <div class="modal-body">
                         <div class="form-group m-3">
                           <label for="" class="form-label">หัวเรื่องข่าวสาร</label>
-                          <input class="form-control" type="text" name="topic"></input>
+                          <input class="form-control" type="text" name="topic" required></input>
                         </div>
                 
                         <div class="form-group m-3">
                           <label for="" class="form-label">รายละเอียด</label>
-                          <textarea class="form-control" name="detail"></textarea>
+                          <textarea class="form-control" name="detail" required></textarea>
                         </div>
                         <div class="input-group me-3">
                           <label for="" class="input-group-text">เลือกรูปปก</label>
-                          <input type="file" name="file_pic" class="form-control">
+                          <input type="file" name="file_pic" class="form-control" required>
                         </div>
                       </div>
                       <div class="modal-footer">

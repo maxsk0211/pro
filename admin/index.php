@@ -139,6 +139,7 @@ $row=mysqli_fetch_object($result);
 
        </div>
        <!-- col-md-9 -->
+  
      </div>
      <!-- row -->
 
@@ -153,9 +154,6 @@ $row=mysqli_fetch_object($result);
 
   <script src="../js/jquery-3.6.1.min.js"></script>
   <?php include '../alert-modal.php'; ?>
+
   </body>
 </html>
-<?php 
-//session_destroy();
-
-?>
