@@ -13,7 +13,6 @@
     <title>จัดการบัญชีผู้ใช้งาน - Happy Care Nursing Home - บ้านมีสูข</title>
       <link href="../css/bootstrap.min.css" rel="stylesheet"> 
       <script src="../js/bootstrap.js"></script> 
-
   </head>
   <body style="padding-top: 70px;background: rgb(100, 40, 140);">
 
