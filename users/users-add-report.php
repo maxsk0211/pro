@@ -93,6 +93,12 @@ require('../dbcon.php');
                     $sql="SELECT * FROM report,users where report.id_user= users.id_user ORDER BY report.id_report DESC";
                   }
           $result=mysqli_query($conn,$sql);
+          $count=mysqli_num_rows($result);
+          if($count == 0) { ?>
+              <tr>
+                <td class="table-danger text-center" colspan="6" >ไม่พบข้อมูล </td>
+              </tr>
+          <?php }
           $i=1;
           while( $row = mysqli_fetch_object($result)){ 
                     
