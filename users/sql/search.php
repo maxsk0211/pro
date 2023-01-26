@@ -20,6 +20,11 @@
 		$_SESSION['search_package']=$search_package;
 		header("location: ../users-show-package.php");
 
+	}elseif (isset($_POST['report']) && ($_POST['report']==1)) {
+		$search_report=$_POST['search'];
+		$_SESSION['search_report']=$search_report;
+		header("location: ../users-add-report.php");
+
 	}
 
  ?>

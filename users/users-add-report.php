@@ -31,8 +31,45 @@ require('../dbcon.php');
           </div>
 
 
-<div class="card">
+        <div class="card">
             <div class="card-body">
+              <div class="form-group mb-5">
+                <a href="#search-report" class="btn btn-primary btn-lg rounded-pill float-end" data-bs-toggle="modal">ค้นหา</a>
+              </div>
+              <br>
+
+          <?php if(isset($_SESSION['search_report'])){ ?>
+             <div class="alert alert-warning">
+               <h5 class="text-danger">คำค้นหาของคุณคือ : <?php echo $_SESSION['search_report']; ?></h5>
+               <div class="ms-auto">
+                 <a href="sql/clear-session.php?search_report=1" class="btn btn-danger">ยกการค้นหา</a>
+               </div>
+             </div>
+              <?php } ?>
+            <form action="sql/search.php" method="post" enctype="multipart/form-data">
+                <div class="modal fade" id="search-report">
+                  <div class="modal-dialog modal-dialog-centered">
+                    <div class="modal-content">
+                      <div class="modal-header bg-primary text-light">
+                        <h4 class="modal-title ">การค้นหาแบบสอบถาม</h4>
+                        <button class="btn-close" data-bs-dismiss="modal" type="button"></button>
+                      </div>
+                      <div class="modal-body">
+                        <div class="input-group">
+                          <input type="text" class="form-control" placeholder="ค้นหา" name="search">
+                          <input type="hidden" name="report" value="1">
+                          <button class="btn btn-primary">ค้นหา</button>
+                        </div>
+                        <div class="form-text text-danger">คุณสามารถค้นหา : ชื่อแบบสอบถาม</div>
+                      </div>
+                      <div class="modal-footer">
+                        <button class="btn btn-danger" data-bs-dismiss="modal" type="button">ปิด</button>
+                        
+                      </div>
+                    </div>
+                  </div>
+                </div>
+            </form>
               <h4 class="bg-primary card-header mb-2 text-light">แบบสอบถามาทั้งหมด</h4>
               <table class="table table-hover table-info">
                 <thead>
@@ -47,7 +84,14 @@ require('../dbcon.php');
                 </thead>
                 <tbody>
                   <?php 
-          $sql="SELECT * FROM report,users  where  report.id_user= users.id_user ORDER BY report.id_report DESC";
+                  if(isset($_SESSION['search_report'])){
+                    $search_report=$_SESSION['search_report'];
+                    $sql="SELECT * FROM report,users WHERE  report_topic LIKE '%$search_report%'  and report.id_user=users.id_user  ORDER BY report.id_report DESC";
+
+                  }else{
+
+                    $sql="SELECT * FROM report,users where report.id_user= users.id_user ORDER BY report.id_report DESC";
+                  }
           $result=mysqli_query($conn,$sql);
           $i=1;
           while( $row = mysqli_fetch_object($result)){ 

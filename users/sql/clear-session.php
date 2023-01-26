@@ -22,6 +22,10 @@
 		unset($_SESSION['type_name']);
 		header("location: ../users-add-chat-room.php");
 
+	}elseif(isset($_GET['search_report']) && ($_GET['search_report']==1)){
+		unset($_SESSION['search_report']);
+		header("location: ../users-add-report.php");
+
 	}
 	
 	
