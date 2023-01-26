@@ -1,7 +1,7 @@
 <?php  
       session_start(); 
       include 'chk-session.php';
-require('../dbcon.php');
+      require('../dbcon.php');
 ?>
 <!doctype html>
 <html lang="en">
