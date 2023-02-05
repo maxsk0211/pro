@@ -102,9 +102,9 @@ include 'chk-session.php';
 
               </div>
               <p class="text-center h5">วันที่สร้าง : <span class="badge bg-primary"><?php echo $row->comment_datetime; ?></span></p>
-                    <a href="sql/del-comment-webboard.php?id_com_web=
-                    <?php echo $row->id_com_web;?>&id_webboard=<?php echo $_GET['id_webboard'];?>" 
-                    class="btn btn-danger float-end" onclick="return confirm('ยืนยันการลบข้อมูล ?');">ลบคอมเม้น</a>
+              <a href="sql/del-comment-webboard.php?id_com_web=<?php echo $row->id_com_web;?>&id_webboard=<?php echo $_GET['id_webboard'];?>"class="btn btn-danger float-end" onclick="return confirm('ยืนยันการลบข้อมูล ?');">ลบคอมเม้น</a>
+
+
 
             </div>
           </div>

@@ -84,6 +84,12 @@
               <?php 
               $sql_show_new1=$sql_show_new." ORDER by id_news DESC";
               $result_show_new=mysqli_query($conn,$sql_show_new1);
+              $count=mysqli_num_rows($result_show_new);
+              if($count==0){ ?>
+                <div class="text-center">
+                  <h1 class="text-danger">ไม่พบข้อมูล</h1>
+                </div>
+              <?php }
               while($row_show_new=mysqli_fetch_object($result_show_new)){ ?>
               <div class="col-sm-4 mt-2">
                 <div class="card alert-info">
